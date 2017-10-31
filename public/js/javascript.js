@@ -48,7 +48,7 @@ function updateCounters() {
 	}
 }
 
-function updateJumbo() {
+function updateJumbo(s) {
 	txt = ''
 	for (var key in dice) {
 		if (dice[key]) {
@@ -58,6 +58,21 @@ function updateJumbo() {
 				txt += dice[key] + 'd' + key
 			}
 		}
-		document.getElementById('jumbo').innerText = txt
+		if (s)
+			document.getElementById('jumbo').innerText = txt + s
+		else
+			document.getElementById('jumbo').innerText = txt
 	}
+}
+
+function rollDice() {
+	sum = 0
+	for (size in dice) {
+		num = dice[size]
+		for (i = 0; i < num; i++) {
+			sum += Math.floor(Math.random() * size) + 1
+		}
+	}
+	console.log(sum)
+	updateJumbo(' = ' + sum)
 }
