@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Dice Roller</title>
+
+		<!-- Bootstrap -->
+		<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<link href='css/style.css' rel='stylesheet'>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class='container'>
+			<div class='jumbotron'>
+				<h1 id='jumbo'>Hello World!</h1>
+			</div>
+		</div>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add4' onclick='add(4)'><h4>+</h4></button>
+						<center><h3 id='amt4'>d4</h3></center>
+					<button type='button' class='btn rem' id='rem4' onclick='rem(4)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add6' onclick='add(6)'><h4>+</h4></button>
+						<center><h3 id='amt6'>d6</h3></center>
+					<button type='button' class='btn rem' id='rem6' onclick='rem(6)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add8' onclick='add(8)'><h4>+</h4></button>
+						<center><h3 id='amt8'>d8</h3></center>
+					<button type='button' class='btn rem' id='rem8' onclick='rem(8)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add10' onclick='add(10)'><h4>+</h4></button>
+						<center><h3 id='amt10'>d10</h3></center>
+					<button type='button' class='btn rem' id='rem10' onclick='rem(10)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add12' onclick='add(12)'><h4>+</h4></button>
+						<center><h3 id='amt12'>d12</h3></center>
+					<button type='button' class='btn rem' id='rem12' onclick='rem(12)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add20' onclick='add(20)'><h4>+</h4></button>
+						<center><h3 id='amt20'>d20</h3></center>
+					<button type='button' class='btn rem' id='rem20' onclick='rem(20)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='add100' onclick='add(100)'><h4>+</h4></button>
+						<center><h3 id='amt100'>d100</h3></center>
+					<button type='button' class='btn rem' id='rem100' onclick='rem(100)'><h4>-</h4></button>
+				</div>
+				<div class='col-sm-1'>
+					<button type='button' class='btn add' id='addCust'><h4>+</h4></button>
+						<center><h3>Custom</h3></center>
+					<button type='button' class='btn rem' id='remCust'><h4>-</h4></button>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='container' id='rollBtnContainer' onclick='rollDice()'>
+					<button type='button' class='btn' id='rollBtn'><h4>Roll!</h4></button>
+				</div>
+			</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<!-- <script src="js/bootstrap.min.js"></script> -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src='js/javascript.js'></script>
+	</body>
+</html>

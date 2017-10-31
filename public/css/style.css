@@ -1,0 +1,21 @@
+* {
+  border-radius: 0 !important;
+}
+
+.add {
+	color: green !important;
+	width: 100% !important
+}
+
+.rem {
+	color: red;
+	width: 100% !important
+}
+
+#rollBtn {
+	width: 100%;
+}
+
+#rollBtnContainer {
+	margin-top: 30px
+}
