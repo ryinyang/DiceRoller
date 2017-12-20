@@ -1,7 +1,7 @@
 var express = require('express')
 var path = require('path')
 var app = express()
-var port = 8080
+var port = process.env.PORT || 8000
 var logger = require('morgan')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
@@ -25,6 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', routes)
 
-app.listen(process.env.PORT || 8080, function() {
-	console.log('server started, running in: ', __dirname)
+app.listen(port, function() {
+	console.log('server started on port: ', port)
 })
