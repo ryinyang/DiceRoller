@@ -1,19 +1,30 @@
 var express = require('express')
+var path = require('path')
 var app = express()
+var port = 8080
+var logger = require('morgan')
+var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
 
-app.get('/', function (req, res) {
-	console.log('Got a GET request for the homepage')
-	res.send('Hello GET')
-})
+var routes = require('./routes/index')
+// var users = require('./routes/users')
 
-app.post('/', function (req, res) {
-	console.log('Got a POST request for the homepage')
-	res.send('Hello POST')
-})
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'jade')
 
-var server = app.listen(8080, function () {
-	var host = server.address().address
-	var port = server.address().port
+// logger logs everything into console
+app.use(logger('dev'))
 
-	console.log('Example app listening at http://%s:%s', host, port)
+// bodyParser allows us to read in the body easily
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
+// 
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Routes
+app.use('/', routes)
+
+app.listen(port, function() {
+	console.log('server started, running in: ', __dirname)
 })
