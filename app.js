@@ -25,6 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', routes)
 
-app.listen(process.env.PORT, function() {
+app.listen(process.env.PORT || 8080, function() {
 	console.log('server started, running in: ', __dirname)
 })
