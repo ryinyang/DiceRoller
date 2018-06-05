@@ -28,3 +28,19 @@ app.use('/', routes)
 app.listen(port, function() {
 	console.log('server started on port: ', port)
 })
+
+// Receives dice rolls and randomly generates number
+// then sends sum back
+app.post('/roll', function(req, res) {
+	console.log('requested')
+	console.log(req.body)
+	dice = req.body
+	sum = 0
+	for (size in dice) {
+		num = dice[size]
+		for (i = 0; i < num; i++) {
+			sum += Math.floor(Math.random() * size) + 1
+		}
+	}
+	res.send(JSON.stringify(sum))
+})

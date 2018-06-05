@@ -65,14 +65,22 @@ function updateJumbo(s) {
 	}
 }
 
+/*
+	Function that sends the dice array to server for rolling once server 
+	returns the sum, update jumbo
+*/
 function rollDice() {
-	sum = 0
-	for (size in dice) {
-		num = dice[size]
-		for (i = 0; i < num; i++) {
-			sum += Math.floor(Math.random() * size) + 1
-		}
-	}
-	console.log(sum)
-	updateJumbo(' = ' + sum)
+	// Send array of dice to server for rolling
+	$.ajax({
+		type: "POST",
+		url: '/roll',
+		data: JSON.stringify(dice),
+		success: function(sum){
+			// Success, update the jumbo with sum
+			console.log(sum)
+			updateJumbo(' = ' + sum)
+		},
+		error: function(err){ alert('error'); },
+		contentType: "application/json"
+    })
 }
