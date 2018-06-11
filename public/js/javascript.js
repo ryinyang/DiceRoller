@@ -1,4 +1,6 @@
 dice = {}		// Associative array to keep track of number of each dice
+rollCount = 0
+history = []
 
 window.onload = function() {
 	dice = {4: 0,
@@ -8,6 +10,9 @@ window.onload = function() {
 			12: 0,
 			20: 0,
 			100: 0}
+
+	sessionStorage.setItem('rollCount', rollCount)
+	sessionStorage.setItem('history', history)
 }
 
 /*
@@ -41,9 +46,11 @@ function rem(num) {
 function updateCounters() {
 	for (var key in dice) {
 		if (dice[key]) {
-			document.getElementById('amt' + key).innerText = dice[key] + 'd' + key
+			// document.getElementById('amt' + key).innerText = dice[key] + 'd' + key
+			document.getElementById('amt' + key).value = parseInt(dice[key])
 		} else {
-			document.getElementById('amt' + key).innerText = 'd' + key
+			// document.getElementById('amt' + key).innerText = 'd' + key
+			document.getElementById('amt' + key).value = null
 		}
 	}
 }
@@ -79,8 +86,26 @@ function rollDice() {
 			// Success, update the jumbo with sum
 			console.log(sum)
 			updateJumbo(' = ' + sum)
+
+			// Update History
+			updateHist((dice, sum))
+			console.log(history)
+			console.log('sesh storage:' + sessionStorage.getItem('history'))
 		},
 		error: function(err){ alert('error'); },
 		contentType: "application/json"
     })
+}
+
+/*
+	Function to update the history array
+*/
+function updateHist(rollAndSum) {
+	rollCount += 1
+	sessionStorage.removeItem('rollCount')
+	sessionStorage.setItem('rollCount', rollCount)
+
+	history += rollAndSum
+	sessionStorage.removeItem('history')
+	sessionStorage.setItem('history', JSON.stringify(history))
 }
