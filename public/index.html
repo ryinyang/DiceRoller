@@ -37,7 +37,7 @@
 						<div class='row'>
 							<div class='col-sm'>
 								<div class='card'>
-									<span class='dice-group'>
+									<div class='dice-group'>
 										<span class='btn-group-vertical'>
 											<button type='button' class='btn add spin' id='add4' onclick='add(4)'>
 												<i class="fa fa-chevron-up align-top"></i>
@@ -49,7 +49,7 @@
 										<span class='amt'>
 											<input type='number' class='dice-input' id='amt4' maxlength='2'>d4
 										</span>
-									</span>
+									</div>
 								</div>
 							</div>
 							<div class='col-sm'>
@@ -81,7 +81,7 @@
 											</button>
 										</span>
 										<span class='amt'>
-											<input type='number' class='dice-input' id='amt8' maxlength='2'>d8
+											<input type='number' class='dice-input' id='amt8'>d8
 										</span>
 									</span>
 								</div>
@@ -167,7 +167,12 @@
 				</div>
 			</div>
 			<div class='col-sm-3'>
-				<div class='container pre-scrollable card'style='background-color: white !important; height: 100%'>hi</div>
+				<div class='container  card' id='history-container'>
+					<div id='history-inner'>
+						<h3 id='history-title'>History</h3>
+						<div id='history-text'></div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

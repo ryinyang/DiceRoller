@@ -1,55 +1,76 @@
 dice = {}		// Associative array to keep track of number of each dice
-rollCount = 0
-history = []
+hist = []
 
 window.onload = function() {
 	clearDice()
 
-	sessionStorage.setItem('rollCount', rollCount)
-	sessionStorage.setItem('history', history)
+	sessionStorage.setItem('hist', hist)
 }
 
 /*
 	Adds a dice to the roll
 */
 function add(num) {
-	console.log('adding a d' + num)
-	dice[num]++
+	// console.log('adding a d' + num)
+
+	// Get current input
+	curr = parseInt(document.getElementById('amt' + num).value)
+
+	// If not a number, continue where we left off
+	if (!isNaN(curr) && curr > 0) {
+		dice[num] = curr + 1
+	}
+	else {
+		dice[num]++
+	}
 	updateCounters()
 	updateJumbo()
-	console.log(dice)
+	updateJumbo(diceToStr(dice))
+	// console.log(dice)
 }
 
 /*
 	Removes a dice from the roll
 */
 function rem(num) {
-	console.log('removing a d' + num)
+	// console.log('removing a d' + num)
 
-	if (dice[num] > 0) {
-		dice[num]--
+	// Get current input
+	curr = parseInt(document.getElementById('amt' + num).value)
+
+	// If not a number, continue where we left off
+	if (curr > 0) {
+		if (!isNaN(curr) && curr > 0) {
+			dice[num] = curr - 1
+		}
+		else {
+			dice[num]--
+		}
 	}
 	updateCounters()
-	updateJumbo()
-	console.log(dice)
+	updateJumbo(diceToStr(dice))
+	// console.log(dice)
 }
 
 /*
 	Looks at dice array and then updates the numbers on page
 */
 function updateCounters() {
+	// Loop through dice and update each input value
 	for (var key in dice) {
-		if (dice[key]) {
-			// document.getElementById('amt' + key).innerText = dice[key] + 'd' + key
+		if (dice[key])
 			document.getElementById('amt' + key).value = parseInt(dice[key])
-		} else {
-			// document.getElementById('amt' + key).innerText = 'd' + key
+		else
 			document.getElementById('amt' + key).value = null
-		}
 	}
 }
 
 function updateJumbo(s) {
+	document.getElementById('jumbo').innerText = s
+
+}
+
+function diceToStr(dice) {
 	txt = ''
 	for (var key in dice) {
 		if (dice[key]) {
@@ -59,11 +80,9 @@ function updateJumbo(s) {
 				txt += dice[key] + 'd' + key
 			}
 		}
-		if (s)
-			document.getElementById('jumbo').innerText = txt + s
-		else
-			document.getElementById('jumbo').innerText = txt
 	}
+
+	return txt
 }
 
 /*
@@ -77,6 +96,7 @@ function hasDice(){
 	}
 	return false
 }
+
 /*
 	Function that sends the dice array to server for rolling once server 
 	returns the sum, update jumbo
@@ -90,13 +110,12 @@ function rollDice() {
 			data: JSON.stringify(dice),
 			success: function(sum){
 				// Success, update the jumbo with sum
-				console.log(sum)
-				updateJumbo(' = ' + sum)
+				// console.log(sum)
+				updateJumbo(diceToStr(dice) + ' = ' + sum)
 
-				// Update History
-				updateHist((dice, sum))
-				console.log(history)
-				console.log('sesh storage:' + sessionStorage.getItem('history'))
+				// Update hist
+				addToHist(dice, sum)
+				showHist()
 			},
 			error: function(err){ alert('error'); },
 			contentType: "application/json"
@@ -116,19 +135,31 @@ function clearDice() {
 			12: 0,
 			20: 0,
 			100: 0}
-	updateJumbo('Hello World!')
+	updateJumbo('Add some dice!')
 	updateCounters()
 }
 
 /*
-	Function to update the history array
+	Function to update the hist array
 */
-function updateHist(rollAndSum) {
-	rollCount += 1
-	sessionStorage.removeItem('rollCount')
-	sessionStorage.setItem('rollCount', rollCount)
+function addToHist(dice, sum) {
 
-	history += rollAndSum
-	sessionStorage.removeItem('history')
-	sessionStorage.setItem('history', JSON.stringify(history))
+	// Keep length of array fixed, otherwise, could run out of mem
+	if (hist.length > 50) {
+		hist.shift()
+	}
+	hist.push(diceToStr(dice) + ' = ' + sum)
+	sessionStorage.setItem('hist', JSON.stringify(hist))
+}
+
+function histToStr(hist) {
+	txt = ''
+	for (var i = hist.length-1; i >= 0; i--) {
+		txt += hist[i] + '\n'
+	}
+	return txt
+}
+
+function showHist() {
+	document.getElementById('history-text').innerText = histToStr(hist)
 }
