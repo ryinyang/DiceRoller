@@ -3,13 +3,7 @@ rollCount = 0
 history = []
 
 window.onload = function() {
-	dice = {4: 0,
-			6: 0,
-			8: 0,
-			10: 0,
-			12: 0,
-			20: 0,
-			100: 0}
+	clearDice()
 
 	sessionStorage.setItem('rollCount', rollCount)
 	sessionStorage.setItem('history', history)
@@ -73,28 +67,57 @@ function updateJumbo(s) {
 }
 
 /*
+	Helper function to see if there are any dice to roll
+*/
+function hasDice(){
+	for (var key in dice) {
+		if (dice[key] > 0) {
+			return true
+		}
+	}
+	return false
+}
+/*
 	Function that sends the dice array to server for rolling once server 
 	returns the sum, update jumbo
 */
 function rollDice() {
-	// Send array of dice to server for rolling
-	$.ajax({
-		type: "POST",
-		url: '/roll',
-		data: JSON.stringify(dice),
-		success: function(sum){
-			// Success, update the jumbo with sum
-			console.log(sum)
-			updateJumbo(' = ' + sum)
+	if (hasDice()) {
+		// Send array of dice to server for rolling
+		$.ajax({
+			type: "POST",
+			url: '/roll',
+			data: JSON.stringify(dice),
+			success: function(sum){
+				// Success, update the jumbo with sum
+				console.log(sum)
+				updateJumbo(' = ' + sum)
 
-			// Update History
-			updateHist((dice, sum))
-			console.log(history)
-			console.log('sesh storage:' + sessionStorage.getItem('history'))
-		},
-		error: function(err){ alert('error'); },
-		contentType: "application/json"
-    })
+				// Update History
+				updateHist((dice, sum))
+				console.log(history)
+				console.log('sesh storage:' + sessionStorage.getItem('history'))
+			},
+			error: function(err){ alert('error'); },
+			contentType: "application/json"
+	    })
+	}
+
+	else {
+		updateJumbo('Nothing to roll, boss!')
+	}
+}
+
+function clearDice() {
+	dice = {4: 0,
+			6: 0,
+			8: 0,
+			10: 0,
+			12: 0,
+			20: 0,
+			100: 0}
+	updateJumbo('Hello World!')
+	updateCounters()
 }
 
 /*

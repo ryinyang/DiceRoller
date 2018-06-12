@@ -1,61 +1,78 @@
+/* Hide spin button on inputs, we're using custom spin buttons */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 
-* {
+body {
+	background-color: #c5c5c5;
+}
+
+/* No rounded corners */
+/** {
   border-radius: 0 !important;
-}
+}*/
 
-.add {
-	color: green !important;
-	width: 100% !important
-}
-
-.rem {
-	color: red;
-	width: 100% !important
-}
-
-#rollBtn {
-	width: 100%;
-}
-
-#rollBtnContainer {
-	margin-top: 30px
-}
-
+/* Top of display */
 #jumbo {
 	height: 69px;
 }
 
-#amt4 {
-	height: 35px;
-	width: 35px;
+/* Dice interface */
+.dice-group {
+	display: inline-flex;
+	/*border-color: black;*/
+	/*border: 2px solid black*/
+	font-weight: bold;
+	/*font-size: 15pt;*/
+}
+
+#main-interface {
+	padding: 10px;
+	border-top: 4px black;
+}
+
+/* Add + remove buttons */
+.add {
+	color: #989898 !important;
+	width: 100% !important
+}
+
+.rem {
+	color: #989898 !important;
+	width: 100% !important
+}
+
+.dice-input {
+	height: 39px;
+	width: 22px;
 	margin: 5px;
 	font-weight: bold;
 	border: 0;
-}
-
-.amt {
-	font-weight: bold;
-	font-size: 20pt;
+	text-align: right;
 }
 
 .spin {
-	width: 40px !important;
+	width: 30px !important;
 	height: 20px !important;
-	display: block !important;
 	padding: 0;
+	background-color: inherit;
 }
 
-.btn-group {
-    /*background-color: #4CAF50; 
-    border: 1px solid green;
-    color: white; 
-    padding: 10px 24px;
-    cursor: pointer;
-    width: 50%;*/
-    display: block !important; /* Make the buttons appear below each other */
+/* Control Buttons */
+#rollBtnContainer {
+	margin-top: 30px
+}
+
+.control-button {
+	width: 20% !important;
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+/* Style */
+.card {
+	background-color: white;
+	border: 1px #989898;
 }
