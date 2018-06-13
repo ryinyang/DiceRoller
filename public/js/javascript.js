@@ -156,7 +156,7 @@ function clearDice() {
 function addToHist(dice, sum) {
 
 	// Keep length of array fixed, otherwise, could run out of mem
-	if (hist.length > 50) {
+	if (hist.length > 10) {
 		hist.shift()
 	}
 	hist.push(diceToStr(dice) + ' = ' + sum)

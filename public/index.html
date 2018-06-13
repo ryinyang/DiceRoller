@@ -31,7 +31,7 @@
 		<div class='container'>
 			<div class='row'>
 				<div class='col-sm-9 p-0'>
-					<div class='card m-2'> <!-- Main Display -->
+					<div class='card m-2 mt-3'> <!-- Main Display -->
 						<div class='card-body'>
 							<h2 class='card-title d-inline' id='main-display'>Hello World!</h2>
 							<button type="button" class='close' id='clearBtn' onclick='clearDice()' aria-label="Close">
@@ -39,7 +39,7 @@
 							</button>
 						</div>
 					</div>
-					<div class='card m-2' id='main-interface'>	<!-- Main Dice Interface -->
+					<div class='card m-2 mt-3' id='main-interface'>	<!-- Main Dice Interface -->
 						<div class='card-body'>
 							<div class='row'>
 								<div class='col-sm p-0'>
@@ -182,15 +182,14 @@
 								</div>	
 							</div>
 							<center>
-<!-- 								<button type='button' class='btn btn-danger w-25 m-1' id='clearBtn' onclick='clearDice()'>Clear</button> -->
 								<button type='button' class='btn btn-success w-25 m-1 mt-4' id='rollBtn' onclick='rollDice()'>Roll!</button>
 							</center>
 						</div>
 					</div>
 				</div>
 				<div class='col-sm-3 p-0'>
-					<div class='card m-2' id='history-container'>
-						<div class='card-body'>
+					<div class='card m-2 mt-3'>
+						<div class='card-body' id='history-container'>
 							<h3 class='card-title' id='history-title'>History</h3>
 							<div id='history-text'></div>
 						</div>

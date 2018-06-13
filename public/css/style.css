@@ -53,5 +53,10 @@ body {
 	background-color: inherit;
 }
 
+/* History */
+#history-container {
+	height: 342px !important;
+	overflow-y: hidden;
+}
 
 /* Style */
