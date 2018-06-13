@@ -25,161 +25,182 @@
 		<![endif]-->
 	</head>
 	<body>
-		<div class='row' style='margin-left: 10px; margin-right:10px;'>
-			<div class='col-sm-9'>
-				<div class='container'> <!-- Jumbotron -->
-					<div class='jumbotron card'>
-						<h1 id='jumbo'>Hello World!</h1>
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="#">RPG Dice Roller</a>
+		</nav>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-sm-9 p-0'>
+					<div class='card m-2'> <!-- Main Display -->
+						<div class='card-body'>
+							<h2 class='card-title d-inline' id='main-display'>Hello World!</h2>
+							<button type="button" class='close' id='clearBtn' onclick='clearDice()' aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
 					</div>
-				</div>
-				<div class='container'> <!-- Main Dice Interface -->
-					<div class='container card' id='main-interface'>
-						<div class='row'>
-							<div class='col-sm'>
-								<div class='card'>
-									<div class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add4' onclick='add(4)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem4' onclick='rem(4)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
+					<div class='card m-2' id='main-interface'>	<!-- Main Dice Interface -->
+						<div class='card-body'>
+							<div class='row'>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<div class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add4' onclick='add(4)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem4' onclick='rem(4)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt4'>d4
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add6' onclick='add(6)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem6' onclick='rem(6)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt6'>d6
+											</span>
 										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt4' maxlength='2'>d4
+									</div>
+								</div>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add8' onclick='add(8)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem8' onclick='rem(8)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt8'>d8
+											</span>
+										</span>
+									</div>
+								</div>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add10' onclick='add(10)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem10' onclick='rem(10)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt10'>d10
+											</span>
 										</span>
 									</div>
 								</div>
 							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add6' onclick='add(6)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem6' onclick='rem(6)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
+							<div class='row'>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add12' onclick='add(12)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem12' onclick='rem(12)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt12'>d12
+											</span>
 										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt6' maxlength='2'>d6
-										</span>
-									</span>
+									</div>
 								</div>
-							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add8' onclick='add(8)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem8' onclick='rem(8)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add20' onclick='add(20)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem20' onclick='rem(20)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt20'>d20
+											</span>
 										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt8'>d8
-										</span>
-									</span>
+									</div>
 								</div>
-							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add10' onclick='add(10)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem10' onclick='rem(10)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add100' onclick='add(100)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem100' onclick='rem(100)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt100'>d100
+											</span>
 										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt10' maxlength='2'>d10
-										</span>
-									</span>
+									</div>
 								</div>
+								<div class='col-sm p-0'>
+									<div class='card border-0'>
+										<span class='dice-group m-1'>
+											<span class='btn-group-vertical'>
+												<button type='button' class='btn add spin' id='add100' onclick='add(100)'>
+													<i class="fa fa-chevron-up align-top"></i>
+												</button>
+												<button type='button' class='btn rem spin' id='rem100' onclick='rem(100)'>
+													<i class="fa fa-chevron-down align-top"></i>
+												</button>
+											</span>
+											<span class='amt'>
+												<input type='number' class='dice-input' id='amt100'>Custom
+											</span>
+										</span>
+									</div>
+								</div>	
 							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add12' onclick='add(12)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem12' onclick='rem(12)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
-										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt12' maxlength='2'>d12
-										</span>
-									</span>
-								</div>
-							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add20' onclick='add(20)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem20' onclick='rem(20)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
-										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt20' maxlength='2'>d20
-										</span>
-									</span>
-								</div>
-							</div>
-							<div class='col-sm'>
-								<div class='card'>
-									<span class='dice-group'>
-										<span class='btn-group-vertical'>
-											<button type='button' class='btn add spin' id='add100' onclick='add(100)'>
-												<i class="fa fa-chevron-up align-top"></i>
-											</button>
-											<button type='button' class='btn rem spin' id='rem100' onclick='rem(100)'>
-												<i class="fa fa-chevron-down align-top"></i>
-											</button>
-										</span>
-										<span class='amt'>
-											<input type='number' class='dice-input' id='amt100' maxlength='2'>d100
-										</span>
-									</span>
-								</div>
-							</div>				
-						</div>
-						<div class='row'>
-							<div class='container' id='rollBtnContainer'>
-								<center>
-									<button type='button' class='btn btn-danger control-button' id='clearBtn' onclick='clearDice()'>Clear</button>
-									<button type='button' class='btn btn-success control-button' id='rollBtn' onclick='rollDice()'>Roll!</button>
-								</center>
-							</div>
+							<center>
+<!-- 								<button type='button' class='btn btn-danger w-25 m-1' id='clearBtn' onclick='clearDice()'>Clear</button> -->
+								<button type='button' class='btn btn-success w-25 m-1 mt-4' id='rollBtn' onclick='rollDice()'>Roll!</button>
+							</center>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class='col-sm-3'>
-				<div class='container  card' id='history-container'>
-					<div id='history-inner'>
-						<h3 id='history-title'>History</h3>
-						<div id='history-text'></div>
+				<div class='col-sm-3 p-0'>
+					<div class='card m-2' id='history-container'>
+						<div class='card-body'>
+							<h3 class='card-title' id='history-title'>History</h3>
+							<div id='history-text'></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<!-- <script src="js/bootstrap.min.js"></script> -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script src='js/javascript.js'></script>
 	</body>
 </html>

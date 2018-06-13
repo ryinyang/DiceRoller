@@ -24,8 +24,8 @@ function add(num) {
 		dice[num]++
 	}
 	updateCounters()
-	updateJumbo()
-	updateJumbo(diceToStr(dice))
+	updateMainDisplay()
+	updateMainDisplay(diceToStr(dice))
 	// console.log(dice)
 }
 
@@ -48,7 +48,7 @@ function rem(num) {
 		}
 	}
 	updateCounters()
-	updateJumbo(diceToStr(dice))
+	updateMainDisplay(diceToStr(dice))
 	// console.log(dice)
 }
 
@@ -65,8 +65,8 @@ function updateCounters() {
 	}
 }
 
-function updateJumbo(s) {
-	document.getElementById('jumbo').innerText = s
+function updateMainDisplay(s) {
+	document.getElementById('main-display').innerText = s
 
 }
 
@@ -111,7 +111,7 @@ function rollDice() {
 			success: function(sum){
 				// Success, update the jumbo with sum
 				// console.log(sum)
-				updateJumbo(diceToStr(dice) + ' = ' + sum)
+				updateMainDisplay(diceToStr(dice) + ' = ' + sum)
 
 				// Update hist
 				addToHist(dice, sum)
@@ -120,10 +120,21 @@ function rollDice() {
 			error: function(err){ alert('error'); },
 			contentType: "application/json"
 	    })
+
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: '/test.py',
+		// 	data: JSON.stringify(dice),
+		// 	success: function(res) {
+		// 		console.log(res)
+		// 	},
+		// 	error: function(err){ alert('error'); },
+		// 	contentType: "application/json"
+		// })
 	}
 
 	else {
-		updateJumbo('Nothing to roll, boss!')
+		updateMainDisplay('Nothing to roll, boss!')
 	}
 }
 
@@ -135,7 +146,7 @@ function clearDice() {
 			12: 0,
 			20: 0,
 			100: 0}
-	updateJumbo('Add some dice!')
+	updateMainDisplay('Add some dice!')
 	updateCounters()
 }
 

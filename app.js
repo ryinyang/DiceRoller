@@ -5,6 +5,7 @@ var port = process.env.PORT || 8000
 var logger = require('morgan')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
+var spawn = require('child_process').spawn
 
 var routes = require('./routes/index')
 // var users = require('./routes/users')
@@ -44,3 +45,23 @@ app.post('/roll', function(req, res) {
 	}
 	res.send(JSON.stringify(sum))
 })
+
+
+// V Failed attempt to get server to talk to python script
+// app.post('/test.py', function(req, res) {
+// 	console.log(typeof(req.body))
+// 	dice = req.body
+// 	txt = ''
+// 	python = spawn('python', ['test.py'])
+
+// 	python.stdout.on('data', function(data) {
+// 		txt += data.toString()
+// 	})
+
+// 	python.stdout.on('end', function() {
+// 		console.log(txt)
+// 	})
+
+// 	python.stdin.write('hello')
+// 	python.stdin.end()
+// })

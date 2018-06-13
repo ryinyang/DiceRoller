@@ -9,19 +9,11 @@ body {
 	background-color: #c5c5c5;
 }
 
-/* No rounded corners */
-/** {
-  border-radius: 0 !important;
-}*/
-
-/* Top of display */
-#jumbo {
-	height: 69px;
-}
 
 /* Dice interface */
 .dice-group {
 	display: inline-flex;
+	flex-wrap: nowrap;
 	/*border-color: black;*/
 	border: 1.5px solid #c5c5c5;
 	font-weight: bold;
@@ -32,7 +24,6 @@ body {
 
 #main-interface {
 	padding: 10px;
-	border-top: 4px black;
 }
 
 /* Add + remove buttons */
@@ -62,40 +53,5 @@ body {
 	background-color: inherit;
 }
 
-/* Control Buttons */
-#rollBtnContainer {
-	margin-top: 30px
-}
-
-.control-button {
-	width: 20% !important;
-	margin-left: 10px;
-	margin-right:10px;
-}
-
-/* History Container */
-#history-container {
-	background-color: white !important; 
-	height: 100%;
-	max-height: 377px;
-}
-
-#history-inner {
-	margin: 12px 8px 8px 8px;
-	overflow-y: hidden;
-}
 
 /* Style */
-.card {
-	background-color: white;
-	border: 1px #989898;
-}
-
-.col-sm {
-	padding: 0px;
-}
-
-.row {
-	margin: 0px;
-
-}
