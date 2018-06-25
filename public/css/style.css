@@ -12,7 +12,7 @@ body {
 
 /* Dice interface */
 .dice-group {
-	display: inline-flex;
+	/*display: inline-flex;*/
 	flex-wrap: nowrap;
 	/*border-color: black;*/
 	border: 1.5px solid #c5c5c5;
@@ -20,6 +20,7 @@ body {
 	margin-left: 1px;
 	margin-right: 1px;
 	border-radius: 0.3rem;
+	text-align: center !important;
 }
 
 #main-interface {
@@ -29,12 +30,18 @@ body {
 /* Add + remove buttons */
 .add {
 	color: #989898 !important;
-	width: 100% !important
+	width: 100% !important;
+	float: left;
 }
 
 .rem {
 	color: #989898 !important;
-	width: 100% !important
+	width: 100% !important;
+	float: right;
+}
+
+.add:active, .rem:active {
+	color: #777777 !important;
 }
 
 .dice-input {
@@ -60,3 +67,16 @@ body {
 }
 
 /* Style */
+.fa-plus-square, .fa-minus-square {
+	font-size: 1.5rem;
+}
+
+.btn:focus {
+  outline: none !important;
+}
+
+.amt {
+	width: 10px !important;
+	height: 10px !important;
+	cursor: text;
+}

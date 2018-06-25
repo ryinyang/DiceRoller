@@ -30,7 +30,7 @@
 		</nav>
 		<div class='container'>
 			<div class='row'>
-				<div class='col-sm-9 p-0'>
+				<div class='col-md-9 p-0'>
 					<div class='card m-2 mt-3'> <!-- Main Display -->
 						<div class='card-body'>
 							<h2 class='card-title d-inline' id='main-display'>Hello World!</h2>
@@ -42,142 +42,78 @@
 					<div class='card m-2 mt-3' id='main-interface'>	<!-- Main Dice Interface -->
 						<div class='card-body'>
 							<div class='row'>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<div class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add4' onclick='add(4)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem4' onclick='rem(4)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt4'>d4
-											</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add4' onclick='add(4)'></i>
+											<span class='amt' contenteditable="true" id='amt4'>0</span><span>d4</span>
+											<i class="fa fa-minus-square rem spin" id='rem4' onclick='rem(4)'></i>
 										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add6' onclick='add(6)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem6' onclick='rem(6)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt6'>d6
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add6' onclick='add(6)'></i>
+											<span class='amt' contenteditable="true" id='amt6'>0</span><span>d6</span>
+											<i class="fa fa-minus-square rem spin" id='rem6' onclick='rem(6)'></i>
+										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add8' onclick='add(8)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem8' onclick='rem(8)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt8'>d8
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add8' onclick='add(8)'></i>
+											<span class='amt' contenteditable="true" id='amt8'>0</span><span>d8</span>
+											<i class="fa fa-minus-square rem spin" id='rem8' onclick='rem(8)'></i>
+										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add10' onclick='add(10)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem10' onclick='rem(10)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt10'>d10
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add10' onclick='add(10)'></i>
+											<span class='amt' contenteditable="true" id='amt10'>0</span><span>d10</span>
+											<i class="fa fa-minus-square rem spin" id='rem10' onclick='rem(10)'></i>
+										</div>
 									</div>
 								</div>
 							</div>
 							<div class='row'>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add12' onclick='add(12)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem12' onclick='rem(12)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt12'>d12
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add12' onclick='add(12)'></i>
+											<span class='amt' contenteditable="true" id='amt12'>0</span><span>d12</span>
+											<i class="fa fa-minus-square rem spin" id='rem12' onclick='rem(12)'></i>
+										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add20' onclick='add(20)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem20' onclick='rem(20)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt20'>d20
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add20' onclick='add(20)'></i>
+											<span class='amt' contenteditable="true" id='amt20'>0</span><span>d20</span>
+											<i class="fa fa-minus-square rem spin" id='rem20' onclick='rem(20)'></i>
+										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add100' onclick='add(100)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem100' onclick='rem(100)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt100'>d100
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='add100' onclick='add(100)'></i>
+											<span class='amt' contenteditable="true" id='amt100'>0</span><span>d100</span>
+											<i class="fa fa-minus-square rem spin" id='rem100' onclick='rem(100)'></i>
+										</div>
 									</div>
 								</div>
-								<div class='col-sm p-0'>
+								<div class='col-md p-0'>
 									<div class='card border-0'>
-										<span class='dice-group m-1'>
-											<span class='btn-group-vertical'>
-												<button type='button' class='btn add spin' id='add100' onclick='add(100)'>
-													<i class="fa fa-chevron-up align-top"></i>
-												</button>
-												<button type='button' class='btn rem spin' id='rem100' onclick='rem(100)'>
-													<i class="fa fa-chevron-down align-top"></i>
-												</button>
-											</span>
-											<span class='amt'>
-												<input type='number' class='dice-input' id='amt100'>Custom
-											</span>
-										</span>
+										<div class='dice-group m-1 py-3 px-2'>
+											<i class="fa fa-plus-square add spin" id='addCust' onclick='add(Cust)'></i>
+											<span class='amt' contenteditable="true" id='amtCust'>0</span><span>dCust</span>
+											<i class="fa fa-minus-square rem spin" id='remCust' onclick='rem(Cust)'></i>
+										</div>
 									</div>
 								</div>	
 							</div>
@@ -187,7 +123,7 @@
 						</div>
 					</div>
 				</div>
-				<div class='col-sm-3 p-0'>
+				<div class='col-md-3 p-0'>
 					<div class='card m-2 mt-3'>
 						<div class='card-body' id='history-container'>
 							<h3 class='card-title' id='history-title'>History</h3>

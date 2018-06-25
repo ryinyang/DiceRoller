@@ -11,45 +11,46 @@ window.onload = function() {
 	Adds a dice to the roll
 */
 function add(num) {
-	// console.log('adding a d' + num)
+	// validateInput()
 
-	// Get current input
-	curr = parseInt(document.getElementById('amt' + num).value)
+	curr = document.getElementById('amt' + num).innerText
+	if (curr == '') {
+		dice[num] += 1
+	}
+	else if (isNaN(curr)) {
+		alert('Please input a whole number of d' + num)
 
-	// If not a number, continue where we left off
-	if (!isNaN(curr) && curr > 0) {
-		dice[num] = curr + 1
 	}
 	else {
-		dice[num]++
+		dice[num] = parseInt(curr) + 1
+		// dice[num]++
 	}
+
 	updateCounters()
 	updateMainDisplay()
 	updateMainDisplay(diceToStr(dice))
-	// console.log(dice)
 }
 
 /*
 	Removes a dice from the roll
 */
 function rem(num) {
-	// console.log('removing a d' + num)
-
-	// Get current input
-	curr = parseInt(document.getElementById('amt' + num).value)
-
-	// If not a number, continue where we left off
-	if (curr > 0) {
-		if (!isNaN(curr) && curr > 0) {
-			dice[num] = curr - 1
-		}
-		else {
-			dice[num]--
-		}
+	curr = document.getElementById('amt' + num).innerText
+	if (curr == '') {
+		dice[num] = 0
 	}
+	else if (isNaN(curr)) {
+		alert('Please input a whole number of d' + num)
+
+	}
+	else {
+		dice[num] = parseInt(curr) - 1
+		// dice[num]++
+	}
+
 	updateCounters()
+	updateMainDisplay()
 	updateMainDisplay(diceToStr(dice))
-	// console.log(dice)
 }
 
 /*
@@ -58,15 +59,18 @@ function rem(num) {
 function updateCounters() {
 	// Loop through dice and update each input value
 	for (var key in dice) {
-		if (dice[key])
-			document.getElementById('amt' + key).value = parseInt(dice[key])
+		if (dice[key] != 0)
+			document.getElementById('amt' + key).innerText = parseInt(dice[key])
 		else
-			document.getElementById('amt' + key).value = null
+			document.getElementById('amt' + key).innerText = ''
 	}
 }
 
 function updateMainDisplay(s) {
-	document.getElementById('main-display').innerText = s
+	if (s)
+		document.getElementById('main-display').innerText = s
+	else
+		document.getElementById('main-display').innerText = 'Add some dice!'
 
 }
 
@@ -95,6 +99,21 @@ function hasDice(){
 		}
 	}
 	return false
+}
+
+/*
+	Look at inputs and update the dice array if they are valid
+	Alert user if not valid
+*/
+function validateInput() {
+	inputs = ['amt4', 'amt6', 'amt8', 'amt10', 'amt12', 'amt20', 'amt100']
+	text = ''
+	for (var i = inputs.length - 1; i >= 0; i--) {
+		text = document.getElementById(inputs[i]).innerText
+		if (isNaN(text) && text != null) {
+			alert('Please input a whole number of d' + inputs[i].substring(3, inputs[i].length))
+		}
+	}
 }
 
 /*
@@ -146,7 +165,7 @@ function clearDice() {
 			12: 0,
 			20: 0,
 			100: 0}
-	updateMainDisplay('Add some dice!')
+	updateMainDisplay()
 	updateCounters()
 }
 
@@ -174,3 +193,4 @@ function histToStr(hist) {
 function showHist() {
 	document.getElementById('history-text').innerText = histToStr(hist)
 }
+
