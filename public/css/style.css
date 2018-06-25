@@ -71,12 +71,8 @@ body {
 	font-size: 1.5rem;
 }
 
-.btn:focus {
-  outline: none !important;
-}
-
 .amt {
-	width: 10px !important;
-	height: 10px !important;
+	min-width: 2rem !important;
+	min-height: 2rem !important;
 	cursor: text;
 }

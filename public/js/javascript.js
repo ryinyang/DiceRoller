@@ -121,6 +121,27 @@ function validateInput() {
 	returns the sum, update jumbo
 */
 function rollDice() {
+
+	nums = [4, 6, 8, 10, 12, 20, 100]
+	for (var i = nums.length - 1; i >= 0; i--) {
+		num = nums[i]
+		curr = document.getElementById('amt' + num).innerText
+		if (curr == '') {
+			dice[num] = 0
+		}
+		else if (isNaN(curr)) {
+			alert('Please input a whole number of d' + num)
+			updateCounters()
+			updateMainDisplay()
+			updateMainDisplay(diceToStr(dice))
+			return
+		}
+		else {
+			dice[num] = parseInt(curr)
+		}
+	}
+
+
 	if (hasDice()) {
 		// Send array of dice to server for rolling
 		$.ajax({
