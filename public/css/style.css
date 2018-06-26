@@ -31,13 +31,13 @@ body {
 .add {
 	color: #989898 !important;
 	width: 100% !important;
-	float: left;
+	float: right;
 }
 
 .rem {
 	color: #989898 !important;
 	width: 100% !important;
-	float: right;
+	float: left;
 }
 
 .add:active, .rem:active {
@@ -62,7 +62,7 @@ body {
 
 /* History */
 #history-container {
-	height: 342px !important;
+	height: 357px !important;
 	overflow-y: hidden;
 }
 

@@ -11,23 +11,31 @@ window.onload = function() {
 	Adds a dice to the roll
 */
 function add(num) {
-	// validateInput()
-
+	// Check for user input, update dice array if valid
 	curr = document.getElementById('amt' + num).innerText
-	if (curr == '') {
+	if (curr == '')
 		dice[num] += 1
-	}
-	else if (isNaN(curr)) {
+	else if (isNaN(curr))
 		alert('Please input a whole number of d' + num)
-
-	}
-	else {
+	else
 		dice[num] = parseInt(curr) + 1
-		// dice[num]++
-	}
 
 	updateCounters()
-	updateMainDisplay()
+	updateMainDisplay(diceToStr(dice))
+}
+
+function addCust() {
+	// Check for user input, update dice array if valid
+	amt = document.getElementById('amtCust').innerText
+	size = document.getElementsBy('custSize').innerText
+	if (amt == '')
+		dice[size] = 1
+	else if (isNaN(amt))
+		alert('Please input a whole number of d' + size)
+	else
+		dice[size] = parseInt(amt) + 1
+
+	updateCounters()
 	updateMainDisplay(diceToStr(dice))
 }
 
@@ -35,21 +43,31 @@ function add(num) {
 	Removes a dice from the roll
 */
 function rem(num) {
+	// Check for user input, update dice array if valid
 	curr = document.getElementById('amt' + num).innerText
-	if (curr == '') {
+	if (curr == '')
 		dice[num] = 0
-	}
-	else if (isNaN(curr)) {
+	else if (isNaN(curr))
 		alert('Please input a whole number of d' + num)
-
-	}
-	else {
+	else
 		dice[num] = parseInt(curr) - 1
-		// dice[num]++
-	}
 
 	updateCounters()
-	updateMainDisplay()
+	updateMainDisplay(diceToStr(dice))
+}
+
+function addCust() {
+	// Check for user input, update dice array if valid
+	amt = document.getElementById('amtCust').innerText
+	size = document.getElementById('custSize').innerText
+	if (amt == '')
+		dice[size] = 0
+	else if (isNaN(amt))
+		alert('Please input a whole number of d' + size)
+	else
+		dice[size] = parseInt(amt) - 1
+
+	updateCounters()
 	updateMainDisplay(diceToStr(dice))
 }
 
@@ -99,21 +117,6 @@ function hasDice(){
 		}
 	}
 	return false
-}
-
-/*
-	Look at inputs and update the dice array if they are valid
-	Alert user if not valid
-*/
-function validateInput() {
-	inputs = ['amt4', 'amt6', 'amt8', 'amt10', 'amt12', 'amt20', 'amt100']
-	text = ''
-	for (var i = inputs.length - 1; i >= 0; i--) {
-		text = document.getElementById(inputs[i]).innerText
-		if (isNaN(text) && text != null) {
-			alert('Please input a whole number of d' + inputs[i].substring(3, inputs[i].length))
-		}
-	}
 }
 
 /*
