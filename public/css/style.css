@@ -5,6 +5,27 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 0.3rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
 body {
 	background-color: #c5c5c5;
 }
@@ -29,14 +50,10 @@ body {
 
 /* Add + remove buttons */
 .add {
-	color: #989898 !important;
-	width: 100% !important;
 	float: right;
 }
 
 .rem {
-	color: #989898 !important;
-	width: 100% !important;
 	float: left;
 }
 
@@ -54,6 +71,7 @@ body {
 }
 
 .spin {
+	color: #989898 !important;
 	width: 30px !important;
 	height: 20px !important;
 	padding: 0;
@@ -63,7 +81,12 @@ body {
 /* History */
 #history-container {
 	height: 357px !important;
-	overflow-y: hidden;
+	overflow-y: scroll;
+}
+
+.history-text {
+	/*border: 1.5px solid #c5c5c5;*/
+	border-radius: 0.3rem;
 }
 
 /* Style */
@@ -74,5 +97,23 @@ body {
 .amt {
 	min-width: 2rem !important;
 	min-height: 2rem !important;
-	cursor: text;
+	cursor: text; 
+}
+
+.dice-interface {
+	/*max-width: 25%;*/
+}
+
+#clearBtn {
+	float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+.greyed {
+	background-color: #c5c5c5;
 }

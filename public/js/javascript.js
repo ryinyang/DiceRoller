@@ -218,3 +218,7 @@ function showHist() {
 	document.getElementById('history-text').innerText = histToStr(hist)
 }
 
+function clearHist() {
+	hist = []
+	document.getElementById('history-text').innerText = ''
+}
