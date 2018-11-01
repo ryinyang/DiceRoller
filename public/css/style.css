@@ -62,12 +62,7 @@ body {
 }
 
 .dice-input {
-	height: 39px;
-	width: 22px;
-	margin: 5px;
-	font-weight: bold;
-	border: 0;
-	text-align: right;
+	max-width: 25%;
 }
 
 .spin {
@@ -77,6 +72,11 @@ body {
 	padding: 0;
 	background-color: inherit;
 }
+
+#addCustBtn {
+	height: 100%;
+}
+
 
 /* History */
 #history-container {

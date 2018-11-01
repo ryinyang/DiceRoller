@@ -24,19 +24,23 @@ function add(num) {
 	updateMainDisplay(diceToStr(dice))
 }
 
+/*
+	Adds custom dice group into the display 
+*/
 function addCust() {
-	// Check for user input, update dice array if valid
-	amt = document.getElementById('amtCust').innerText
-	size = document.getElementsBy('custSize').innerText
-	if (amt == '')
-		dice[size] = 1
-	else if (isNaN(amt))
-		alert('Please input a whole number of d' + size)
-	else
-		dice[size] = parseInt(amt) + 1
+	// // Check for user input, update dice array if valid
+	// amt = document.getElementById('amtCust').innerText
+	// size = document.getElementById('custSize').innerText
+	// if (amt == '')
+	// 	dice[size] = 1
+	// else if (isNaN(amt))
+	// 	alert('Please input a whole number of d' + size)
+	// else
+	// 	dice[size] = parseInt(amt) + 1
 
-	updateCounters()
-	updateMainDisplay(diceToStr(dice))
+	// updateCounters()
+	// updateMainDisplay(diceToStr(dice))
+
 }
 
 /*
@@ -56,7 +60,7 @@ function rem(num) {
 	updateMainDisplay(diceToStr(dice))
 }
 
-function addCust() {
+function remCust() {
 	// Check for user input, update dice array if valid
 	amt = document.getElementById('amtCust').innerText
 	size = document.getElementById('custSize').innerText
