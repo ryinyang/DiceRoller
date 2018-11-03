@@ -73,12 +73,12 @@ body {
 	background-color: inherit;
 }
 
-#addCustBtn {
+#add-cust-btn {
 	height: 100%;
 }
 
 /* Label in the modal */
-#custSizeLabel {
+#cust-size-label {
 	font-weight: normal;
 }
 
@@ -108,7 +108,7 @@ body {
 	/*max-width: 25%;*/
 }
 
-#clearBtn {
+#clear-btn {
 	float: right;
     font-size: 1.5rem;
     font-weight: 700;

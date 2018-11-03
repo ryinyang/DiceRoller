@@ -35,7 +35,7 @@ $('document').ready(function() {
 		var values = $(this).serialize()
 		console.log(values)
 
-		$('#custDiceModal').modal('hide')
+		$('#cust-dice-modal').modal('hide')
 	})
 
 	// Make sure to focus on input when modal opens up

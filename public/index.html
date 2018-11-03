@@ -117,9 +117,9 @@
                 <div class='col-md dice-input p-0 h-100'>
                   <div class='card border-0 h-100'>
                     <div class='dice-group m-1 h-100 align-middle'>
-                      <button type='button' class='btn btn-success w-100 align-middle' id='addCustBtn' data-toggle='modal' data-target='#custDiceModal'>Add custom dice</button>
+                      <button type='button' class='btn btn-success w-100 align-middle' id='add-cust-btn' data-toggle='modal' data-target='#cust-dice-modal'>Add custom dice</button>
                       <!-- Cust Dice Modal -->
-                      <div class='modal fade' id='custDiceModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal fade' id='cust-dice-modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                         <div class='modal-dialog' role='document'>
                           <div class='modal-content'>
                             <div class='modal-header'>
@@ -131,7 +131,7 @@
                             <div class='modal-body'>
                               <form id='custForm'>
                                 <div class='form-row'>
-                                  <label for='custSizeInput' id='custSizeLabel'>Enter the number of sides:</label>
+                                  <label for='custSizeInput' id='cust-size-label'>Enter the number of sides:</label>
                                   <input class='form-control' type='number' id='custSizeInput
                                   ' min='1' max='9999' name='custSize' required>
                                 </div>
@@ -158,7 +158,7 @@
           <div class='card m-2 mt-3'>
             <div class='card-body' id='history-container'>
               <h3 class='card-title d-inline' id='history-title'>History</h3>
-              <button type='button' class='close' id='clearBtn' onclick='clearHist()' aria-label='Close'>
+              <button type='button' class='close' id='clear-btn' onclick='clearHist()' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
               <div id='history-text'></div>
