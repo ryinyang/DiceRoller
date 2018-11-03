@@ -25,23 +25,24 @@ function add(num) {
 }
 
 /*
-	Adds custom dice group into the display 
+	Handles custom dice form submission
 */
-function addCust() {
-	// // Check for user input, update dice array if valid
-	// amt = document.getElementById('amtCust').innerText
-	// size = document.getElementById('custSize').innerText
-	// if (amt == '')
-	// 	dice[size] = 1
-	// else if (isNaN(amt))
-	// 	alert('Please input a whole number of d' + size)
-	// else
-	// 	dice[size] = parseInt(amt) + 1
+$('document').ready(function() {
+	$('#custForm').submit(function(e) {
+		e.preventDefault()
+		// console.log($('#custForm').serialize())
 
-	// updateCounters()
-	// updateMainDisplay(diceToStr(dice))
+		var values = $(this).serialize()
+		console.log(values)
 
-}
+		$('#custDiceModal').modal('hide')
+	})
+
+	// Make sure to focus on input when modal opens up
+	$('.modal').on('shown.bs.modal', function() {
+		$(this).find('input:first').focus()
+	})
+})
 
 /*
 	Removes a dice from the roll
@@ -129,6 +130,7 @@ function hasDice(){
 */
 function rollDice() {
 
+	console.log('roll')
 	nums = [4, 6, 8, 10, 12, 20, 100]
 	for (var i = nums.length - 1; i >= 0; i--) {
 		num = nums[i]
@@ -152,7 +154,7 @@ function rollDice() {
 	if (hasDice()) {
 		// Send array of dice to server for rolling
 		$.ajax({
-			type: "POST",
+			type: 'POST',
 			url: '/roll',
 			data: JSON.stringify(dice),
 			success: function(sum){
@@ -165,19 +167,8 @@ function rollDice() {
 				showHist()
 			},
 			error: function(err){ alert('error'); },
-			contentType: "application/json"
+			contentType: 'application/json'
 	    })
-
-		// $.ajax({
-		// 	type: 'POST',
-		// 	url: '/test.py',
-		// 	data: JSON.stringify(dice),
-		// 	success: function(res) {
-		// 		console.log(res)
-		// 	},
-		// 	error: function(err){ alert('error'); },
-		// 	contentType: "application/json"
-		// })
 	}
 
 	else {
