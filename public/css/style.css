@@ -121,3 +121,7 @@ body {
 .greyed {
 	background-color: #c5c5c5;
 }
+
+#templates {
+	display: none;
+}

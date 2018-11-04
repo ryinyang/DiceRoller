@@ -1,10 +1,88 @@
-dice = {}		// Associative array to keep track of number of each dice
+dice = {}		// Object to keep track of number of each dice
 hist = []
 
 window.onload = function() {
-	clearDice()
+	dice = {4: 0,
+			6: 0,
+			8: 0,
+			10: 0,
+			12: 0,
+			20: 0,
+			100: 0}
 
 	sessionStorage.setItem('hist', hist)
+}
+
+// All the handler bindings
+$('document').ready(function() {
+
+	// Add button handler
+	$(document).on('click', '.rem', function(e) {
+		// Get size from the id of buttons
+		var size = e.target.id.slice(3)
+		rem(size)
+	})
+
+	// Add button handler, this syntax binds to future elements
+	$(document).on('click', '.add', function(e) {
+		// Get size from the id of buttons
+		var size = e.target.id.slice(3)
+		add(size)
+	})
+
+	// Handles custom dice form submission
+	$('#cust-form').submit(function(e) {
+		e.preventDefault()
+		$('#cust-dice-modal').modal('hide')
+
+		var size = parseInt($('#cust-form input').val())
+		
+		// If size is new, add new dice to dice obj
+		if (!(size in dice)) {
+			dice[size] = 0
+		} else {
+			return
+		}
+		
+		// Create new dice
+		var newDice = createDice(size)
+
+		// Put dice on page
+		$('#add-cust-btn-container').before(newDice)
+
+		// Move add-cust-btn
+		var numUnique = Object.keys(dice).length
+		if (numUnique % 4 == 0) {
+			console.log('cloned')
+			var newRow = $('#row-template').clone()
+			newRow.attr('id', '')
+			newRow.append($('#add-cust-btn-container'))
+			$('#roll-btn-container').before(newRow)
+		} else {
+			newDice.after($('#add-cust-btn-container'))
+		}
+	})
+
+	// Make sure to focus on input when modal opens up
+	$('.modal').on('shown.bs.modal', function() {
+		$(this).find('input:first').focus()
+	})
+})
+
+// Creates the markup of the dice
+function createDice(size) {
+	newDice = $('#dice-input-template').clone()
+
+	// Update the attributes
+	newDice.attr('id', '')
+	newDice.find('#amt-template').attr('id', 'amt' + size)
+	newDice.find('#rem-template').attr('id', 'rem' + size)
+	// newDice.find('#rem' + size.toString()).on('click', size, rem)
+	newDice.find('#add-template').attr('id', 'add' + size)
+	// newDice.find('#add' + size.toString()).on('click', size, add)
+	newDice.find('#size-text-template').html('d' + size)
+
+	return newDice
 }
 
 /*
@@ -12,6 +90,7 @@ window.onload = function() {
 */
 function add(num) {
 	// Check for user input, update dice array if valid
+	console.log(num)
 	curr = document.getElementById('amt' + num).innerText
 	if (curr == '')
 		dice[num] += 1
@@ -23,26 +102,6 @@ function add(num) {
 	updateCounters()
 	updateMainDisplay(diceToStr(dice))
 }
-
-/*
-	Handles custom dice form submission
-*/
-$('document').ready(function() {
-	$('#custForm').submit(function(e) {
-		e.preventDefault()
-		// console.log($('#custForm').serialize())
-
-		var values = $(this).serialize()
-		console.log(values)
-
-		$('#cust-dice-modal').modal('hide')
-	})
-
-	// Make sure to focus on input when modal opens up
-	$('.modal').on('shown.bs.modal', function() {
-		$(this).find('input:first').focus()
-	})
-})
 
 /*
 	Removes a dice from the roll
@@ -61,21 +120,6 @@ function rem(num) {
 	updateMainDisplay(diceToStr(dice))
 }
 
-function remCust() {
-	// Check for user input, update dice array if valid
-	amt = document.getElementById('amtCust').innerText
-	size = document.getElementById('custSize').innerText
-	if (amt == '')
-		dice[size] = 0
-	else if (isNaN(amt))
-		alert('Please input a whole number of d' + size)
-	else
-		dice[size] = parseInt(amt) - 1
-
-	updateCounters()
-	updateMainDisplay(diceToStr(dice))
-}
-
 /*
 	Looks at dice array and then updates the numbers on page
 */
@@ -85,7 +129,7 @@ function updateCounters() {
 		if (dice[key] != 0)
 			document.getElementById('amt' + key).innerText = parseInt(dice[key])
 		else
-			document.getElementById('amt' + key).innerText = ''
+			document.getElementById('amt' + key).innerText = '0'
 	}
 }
 
@@ -177,13 +221,9 @@ function rollDice() {
 }
 
 function clearDice() {
-	dice = {4: 0,
-			6: 0,
-			8: 0,
-			10: 0,
-			12: 0,
-			20: 0,
-			100: 0}
+	for (size in dice) {
+		dice[size] = 0
+	}
 	updateMainDisplay()
 	updateCounters()
 }

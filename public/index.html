@@ -38,41 +38,41 @@
             </div>
           </div>
           <div class='card m-2 mt-3' id='main-interface'> <!-- Main Dice Interface -->
-            <div class='card-body'>
+            <div class='card-body' id='row-container'>
               <div class='row'>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem4' onclick='rem(4)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem4'></i>
                       <span class='amt' contenteditable='true' id='amt4'>0</span><span>d4</span>
-                      <i class='fa fa-plus-square add spin' id='add4' onclick='add(4)'></i>
+                      <i class='fa fa-plus-square add spin' id='add4'></i>
                     </div>
                   </div>
                 </div>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem6' onclick='rem(6)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem6' ></i>
                       <span class='amt' contenteditable='true' id='amt6'>0</span><span>d6</span>
-                      <i class='fa fa-plus-square add spin' id='add6' onclick='add(6)'></i>
+                      <i class='fa fa-plus-square add spin' id='add6'></i>
                     </div>
                   </div>
                 </div>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem8' onclick='rem(8)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem8' ></i>
                       <span class='amt' contenteditable='true' id='amt8'>0</span><span>d8</span>
-                      <i class='fa fa-plus-square add spin' id='add8' onclick='add(8)'></i>
+                      <i class='fa fa-plus-square add spin' id='add8'></i>
                     </div>
                   </div>
                 </div>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem10' onclick='rem(10)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem10'></i>
                       <span class='amt' contenteditable='true' id='amt10'>0</span><span>d10</span>
-                      <i class='fa fa-plus-square add spin' id='add10' onclick='add(10)'></i>
+                      <i class='fa fa-plus-square add spin' id='add10'></i>
                     </div>
                   </div>
                 </div>
@@ -81,40 +81,40 @@
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem12' onclick='rem(12)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem12'></i>
                       <span class='amt' contenteditable='true' id='amt12'>0</span><span>d12</span>
-                      <i class='fa fa-plus-square add spin' id='add12' onclick='add(12)'></i>
+                      <i class='fa fa-plus-square add spin' id='add12'></i>
                     </div>
                   </div>
                 </div>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem20' onclick='rem(20)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem20'></i>
                       <span class='amt' contenteditable='true' id='amt20'>0</span><span>d20</span>
-                      <i class='fa fa-plus-square add spin' id='add20' onclick='add(20)'></i>
+                      <i class='fa fa-plus-square add spin' id='add20'></i>
                     </div>
                   </div>
                 </div>
                 <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem100' onclick='rem(100)'></i>
+                      <i class='fa fa-minus-square rem spin' id='rem100'></i>
                       <span class='amt' contenteditable='true' id='amt100'>0</span><span>d100</span>
-                      <i class='fa fa-plus-square add spin' id='add100' onclick='add(100)'></i>
+                      <i class='fa fa-plus-square add spin' id='add100'></i>
                     </div>
                   </div>
                 </div>
                 <!-- <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='remCust' onclick='remCust()'></i>
+                      <i class='fa fa-minus-square rem spin' id='remCust' ()'></i>
                       <span class='amt' contenteditable='true' id='amtCust'>0</span>d<span contenteditable='true' id='custSize'>Cust</span>
-                      <i class='fa fa-plus-square add spin' id='addCust' onclick='addCust()'></i>
+                      <i class='fa fa-plus-square add spin' id='addCust'()'></i>
                     </div>
                   </div>
                 </div>  --> 
-                <div class='col-md dice-input p-0 h-100'>
+                <div class='col-md dice-input p-0 h-100' id='add-cust-btn-container'>
                   <div class='card border-0 h-100'>
                     <div class='dice-group m-1 h-100 align-middle'>
                       <button type='button' class='btn btn-success w-100 align-middle' id='add-cust-btn' data-toggle='modal' data-target='#cust-dice-modal'>Add custom dice</button>
@@ -129,7 +129,7 @@
                               </button>
                             </div>
                             <div class='modal-body'>
-                              <form id='custForm'>
+                              <form id='cust-form'>
                                 <div class='form-row'>
                                   <label for='custSizeInput' id='cust-size-label'>Enter the number of sides:</label>
                                   <input class='form-control' type='number' id='custSizeInput
@@ -148,7 +148,7 @@
                   </div>
                 </div>
               </div>
-              <center>
+              <center id='roll-btn-container'>
                 <button type='button' class='btn btn-success w-25 m-1 mt-4' id='rollBtn' onclick='rollDice()'>Roll!</button>
               </center>
             </div>
@@ -166,6 +166,22 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div id='templates'>
+      <!-- Dice input -->
+      <div class='col-md dice-input p-0' id='dice-input-template'>
+        <div class='card border-0'>
+          <div class='dice-group m-1 py-3 px-2'>
+            <i class='fa fa-minus-square rem spin' id='rem-template'></i>
+            <span class='amt' contenteditable='true' id='amt-template'>0</span><span id='size-text-template'>d100</span>
+            <i class='fa fa-plus-square add spin' id='add-template'></i>
+          </div>
+        </div>
+      </div>
+      <!-- End of dice input -->
+      <!-- Row template -->
+      <div class='row' id='row-template'></div>
     </div>
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
