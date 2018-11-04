@@ -109,7 +109,7 @@ function add(num) {
 function rem(num) {
 	// Check for user input, update dice array if valid
 	curr = document.getElementById('amt' + num).innerText
-	if (curr == '')
+	if (curr == '0')
 		dice[num] = 0
 	else if (isNaN(curr))
 		alert('Please input a whole number of d' + num)
