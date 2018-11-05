@@ -32,7 +32,7 @@
           <div class='card m-2 mt-3'> <!-- Main Display -->
             <div class='card-body'>
               <h2 class='card-title d-inline' id='main-display'>Hello World!</h2>
-              <button type='button' class='close' id='clearBtn' onclick='clearDice()' aria-label='Close'>
+              <button type='button' class='close' id='clear-dice-btn' onclick='clearDice()' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
@@ -149,8 +149,15 @@
                 </div>
               </div>
               <center id='roll-btn-container'>
-                <button type='button' class='btn btn-success w-25 m-1 mt-4' id='rollBtn' onclick='rollDice()'>Roll!</button>
+                <button type='button' class='btn btn-secondary w-25 m-1 mt-4' id='save-dice-btn'>Save Dice</button>
+                <button type='button' class='btn btn-success w-25 m-1 mt-4' id='roll-btn'>Roll!</button>
               </center>
+            </div>
+          </div>
+          <div class='card m-2 mt-3'>
+            <div class='card-body'>
+              <h2 class='card-title'>Saved Rolls</h2>
+              <p id='first-combo'>Nothing here yet...</p>
             </div>
           </div>
         </div>
@@ -158,7 +165,7 @@
           <div class='card m-2 mt-3'>
             <div class='card-body' id='history-container'>
               <h3 class='card-title d-inline' id='history-title'>History</h3>
-              <button type='button' class='close' id='clear-btn' onclick='clearHist()' aria-label='Close'>
+              <button type='button' class='close' id='clear-hist-btn' onclick='clearHist()' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
               <div id='history-text'></div>
@@ -182,6 +189,8 @@
       <!-- End of dice input -->
       <!-- Row template -->
       <div class='row' id='row-template'></div>
+      <!-- Paragraph template -->
+      <p id='para-template'></p>
     </div>
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
@@ -190,6 +199,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src='js/javascript.js'></script>
+    <!-- <script src='js/util.js'></script> -->
+
 
   </body>
 </html>

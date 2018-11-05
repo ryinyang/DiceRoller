@@ -1,5 +1,6 @@
 dice = {}		// Object to keep track of number of each dice
 hist = []
+savedCombos = []
 
 window.onload = function() {
 	dice = {4: 0,
@@ -16,6 +17,8 @@ window.onload = function() {
 // All the handler bindings
 $('document').ready(function() {
 
+	$('#clear-dice-btn').click(clearDice())
+
 	// Add button handler
 	$(document).on('click', '.rem', function(e) {
 		// Get size from the id of buttons
@@ -29,6 +32,15 @@ $('document').ready(function() {
 		var size = e.target.id.slice(3)
 		add(size)
 	})
+
+	// Bind roll() to its button
+	$('#roll-btn').click(rollDice)
+
+	// Bind addCombo() to its button
+	$('#save-dice-btn').click(addCombo)
+
+	// Bind clearHist() to its button
+	$('#clear-hist-btn').click(clearHist)
 
 	// Handles custom dice form submission
 	$('#cust-form').submit(function(e) {
@@ -77,9 +89,7 @@ function createDice(size) {
 	newDice.attr('id', '')
 	newDice.find('#amt-template').attr('id', 'amt' + size)
 	newDice.find('#rem-template').attr('id', 'rem' + size)
-	// newDice.find('#rem' + size.toString()).on('click', size, rem)
 	newDice.find('#add-template').attr('id', 'add' + size)
-	// newDice.find('#add' + size.toString()).on('click', size, add)
 	newDice.find('#size-text-template').html('d' + size)
 
 	return newDice
@@ -201,7 +211,7 @@ function rollDice() {
 			type: 'POST',
 			url: '/roll',
 			data: JSON.stringify(dice),
-			success: function(sum){
+			success: function(sum) {
 				// Success, update the jumbo with sum
 				// console.log(sum)
 				updateMainDisplay(diceToStr(dice) + ' = ' + sum)
@@ -256,4 +266,11 @@ function showHist() {
 function clearHist() {
 	hist = []
 	document.getElementById('history-text').innerText = ''
+}
+
+function addCombo() {
+	console.log('Adding combo')
+	savedCombos.push(dice)
+	$('#first-combo').text(diceToStr(dice))
+	console.log(dice)
 }
