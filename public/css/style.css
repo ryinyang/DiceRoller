@@ -44,6 +44,14 @@ body {
 	text-align: center !important;
 }
 
+.rounded-border {
+	flex-wrap: nowrap;
+	border: 1.5px solid #c5c5c5;
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: 0.3rem;
+}
+
 #main-interface {
 	padding: 10px;
 }
@@ -125,3 +133,7 @@ body {
 #templates {
 	display: none;
 }
+
+/*.load-combo {
+	float: right;
+}*/
