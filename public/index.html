@@ -39,106 +39,28 @@
           </div>
           <div class='m-2 mt-3' id='dice-container'>
             <div class='d-flex'>
-              <button type='button' class='btn btn-secondary dice-module m-1 py-3 px-2'  id='add-cust-btn' data-target='#cust-dice-modal' data-toggle='modal'>
+              <button type='button' class='btn btn-secondary dice-module m-1 py-3 px-2' id='add-cust-btn' data-target='#cust-dice-modal' data-toggle='modal'>
                 Add Custom Dice
               </button>
             </div>
             <center id='roll-btn-container'>
-              <button type='button' class='btn btn-secondary w-25 m-1 mt-4' id='save-dice-btn'>Save Dice</button>
-              <button type='button' class='btn btn-success w-25 m-1 mt-4' id='roll-btn'>Roll!</button>
+              <button type='button' class='btn btn-secondary m-1 mt-4' id='save-dice-btn'>Save Dice</button>
+              <button type='button' class='btn btn-success m-1 mt-4' id='roll-btn'>Roll!</button>
             </center>
-          </div>
-          <div class='card m-2 mt-3' id='main-interface'> <!-- Main Dice Interface -->
-            <div class='card-body' id='row-container'>
-              <div class='d-flex'>
-                <!-- <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem4'></i>
-                      <span class='amt' contenteditable='true' id='amt4'>0</span><span>d4</span>
-                      <i class='fa fa-plus-square add spin' id='add4'></i>
-                    </div>
-                  </div>
-                </div> -->
-                <div class='dice-module m-1 py-3 px-2'>
-                  <i class='fa fa-minus-square float-left rem spin' id='rem6'></i>
-                    <span class='amt' contenteditable='true' id='amt6'>0</span><span>d6</span>
-                  <i class='fa fa-plus-square float-right add spin' id='add6'></i>
-                </div>
-                <!-- <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem6' ></i>
-                      <span class='amt' contenteditable='true' id='amt6'>0</span><span>d6</span>
-                      <i class='fa fa-plus-square add spin' id='add6'></i>
-                    </div>
-                  </div>
-                </div>
-                <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem8' ></i>
-                      <span class='amt' contenteditable='true' id='amt8'>0</span><span>d8</span>
-                      <i class='fa fa-plus-square add spin' id='add8'></i>
-                    </div>
-                  </div>
-                </div>
-                <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem10'></i>
-                      <span class='amt' contenteditable='true' id='amt10'>0</span><span>d10</span>
-                      <i class='fa fa-plus-square add spin' id='add10'></i>
-                    </div>
-                  </div>
-                </div> -->
-              </div>
-              <div class='row'>
-                <!-- <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem12'></i>
-                      <span class='amt' contenteditable='true' id='amt12'>0</span><span>d12</span>
-                      <i class='fa fa-plus-square add spin' id='add12'></i>
-                    </div>
-                  </div>
-                </div>
-                <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem20'></i>
-                      <span class='amt' contenteditable='true' id='amt20'>0</span><span>d20</span>
-                      <i class='fa fa-plus-square add spin' id='add20'></i>
-                    </div>
-                  </div>
-                </div>
-                <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='rem100'></i>
-                      <span class='amt' contenteditable='true' id='amt100'>0</span><span>d100</span>
-                      <i class='fa fa-plus-square add spin' id='add100'></i>
-                    </div>
-                  </div>
-                </div>
-                <div class='col-md dice-input p-0 h-100' id='add-cust-btn-container'>
-                  <div class='card border-0 h-100'>
-                    <div class='dice-group m-1 h-100 align-middle'>
-                      <button type='button' class='btn btn-success w-100 align-middle' id='add-cust-btn' data-toggle='modal' data-target='#cust-dice-modal'>Add custom dice</button>
-                    </div>
-                  </div>
-                </div> -->
-              </div>
-              
-            </div>
           </div>
           <div class='card m-2 mt-3'>
             <div class='card-body'>
               <h2 class='card-title'>Saved Rolls</h2>
-              <div class='d-flex rounded-border m-1 py-1 px-2' id='first-combo'>
-                <div class='mr-auto'><span class='align-middle'>Nothing here yet...</span></div>
-                <button type='button' class='btn btn-primary load-combo'>Load</button>
-              </div>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <div class='d-inline'>Cras justo odio</div>
+                  <button type='button' class='btn float-right'>Load</button>
+                </li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -164,21 +86,8 @@
         <i class='fa fa-plus-square float-right spin add' id='add-template'></i>
       </div>
       <div class='d-flex' id='d-flex-template'></div>
-      <!-- Dice input -->
-      <!-- <div class='col-md dice-input p-0' id='dice-input-template'>
-        <div class='card border-0'>
-          <div class='dice-group m-1 py-3 px-2'>
-            <i class='fa fa-minus-square rem spin' id='rem-template'></i>
-            <span class='amt' contenteditable='true' id='amt-template'>0</span><span id='size-text-template'>d100</span>
-            <i class='fa fa-plus-square add spin' id='add-template'></i>
-          </div>
-        </div>
-      </div> -->
-      <!-- End of dice input -->
-      <!-- Row template -->
-      <div class='row' id='row-template'></div>
+      <li class="list-group-item" id='list-group-item-template'>Dapibus ac facilisis in</li>
     </div>
-
     <!-- Cust Dice Modal -->
     <div class='modal fade' id='cust-dice-modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
       <div class='modal-dialog' role='document'>
@@ -192,8 +101,8 @@
           <div class='modal-body'>
             <form id='cust-form'>
               <div class='form-row'>
-                <label for='custSizeInput' id='cust-size-label'>Enter the number of sides:</label>
-                <input class='form-control' type='number' id='custSizeInput
+                <label for='cust-size-input' id='cust-size-label'>Enter the number of sides:</label>
+                <input class='form-control' type='number' id='cust-size-input
                 ' min='1' max='9999' name='custSize' required>
               </div>
               <div class='modal-footer'>

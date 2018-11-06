@@ -2,18 +2,6 @@ dice = {}		// Object to keep track of number of each dice
 hist = []
 savedCombos = []
 
-// window.onload = function() {
-// 	dice = {4: 0,
-// 			6: 0,
-// 			8: 0,
-// 			10: 0,
-// 			12: 0,
-// 			20: 0,
-// 			100: 0}
-
-// 	sessionStorage.setItem('hist', hist)
-// }
-
 // All the handler bindings
 $('document').ready(function() {
 
@@ -57,42 +45,52 @@ $('document').ready(function() {
 	// Handles custom dice form submission
 	$('#cust-form').submit(function(e) {
 		e.preventDefault()
-		console.log('addcust')
-		$('#cust-dice-modal').modal('hide')
-
-		var size = parseInt($('#cust-form input').val())
-		
-		// If size is new, add new dice to dice obj
-		if (!(size in dice)) {
-			dice[size] = 0
-		} else {
-			return
-		}
-		
-		// Create new dice
-		var newDice = createDice(size)
-
-		// Put dice on page
-		$('#add-cust-btn-container').before(newDice)
-
-		// Move add-cust-btn
-		var numUnique = Object.keys(dice).length
-		if (numUnique % 4 == 0) {
-			console.log('cloned')
-			var newRow = $('#row-template').clone()
-			newRow.attr('id', '')
-			newRow.append($('#add-cust-btn-container'))
-			$('#roll-btn-container').before(newRow)
-		} else {
-			newDice.after($('#add-cust-btn-container'))
-		}
+		addCustDice()
 	})
 
 	// Make sure to focus on input when modal opens up
 	$('.modal').on('shown.bs.modal', function() {
 		$(this).find('input:first').focus()
 	})
+
+	$(document).on('click', '.load-button', function() {
+		
+	})
 })
+
+function addCustDice() {
+	console.log('addcust')
+	$('#cust-dice-modal').modal('hide')
+
+	var size = parseInt($('#cust-form input').val())
+
+	// If size is new, add new dice to dice obj
+	if (!(size in dice)) {
+		dice[size] = 0
+	} else {
+		return
+	}
+
+	// Create new dice
+	var newDice = createDice(size)
+
+	// Put dice on page
+	$('#add-cust-btn').before(newDice)
+
+	// Move add-cust-btn
+	var numUnique = Object.keys(dice).length
+	if (numUnique % 4 == 0) {
+		console.log('cloned')
+		var newRow = $('#d-flex-template').clone()
+		newRow.attr('id', '')
+		newRow.append($('#add-cust-btn'))
+		$('#roll-btn-container').before(newRow)
+	} else {
+		newDice.after($('#add-cust-btn'))
+	}
+
+	// $('#cust-size-input').val('')
+}
 
 function loadDiceModules() {
 	var row = $('#add-cust-btn').parent()
