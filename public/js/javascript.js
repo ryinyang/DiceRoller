@@ -2,22 +2,34 @@ dice = {}		// Object to keep track of number of each dice
 hist = []
 savedCombos = []
 
-window.onload = function() {
+// window.onload = function() {
+// 	dice = {4: 0,
+// 			6: 0,
+// 			8: 0,
+// 			10: 0,
+// 			12: 0,
+// 			20: 0,
+// 			100: 0}
+
+// 	sessionStorage.setItem('hist', hist)
+// }
+
+// All the handler bindings
+$('document').ready(function() {
+
 	dice = {4: 0,
 			6: 0,
 			8: 0,
 			10: 0,
 			12: 0,
 			20: 0,
-			100: 0}
+			100: 0,}
 
 	sessionStorage.setItem('hist', hist)
-}
 
-// All the handler bindings
-$('document').ready(function() {
+	loadDiceModules()
 
-	$('#clear-dice-btn').click(clearDice())
+	$('#clear-dice-btn').click(clearDice)
 
 	// Add button handler
 	$(document).on('click', '.rem', function(e) {
@@ -45,6 +57,7 @@ $('document').ready(function() {
 	// Handles custom dice form submission
 	$('#cust-form').submit(function(e) {
 		e.preventDefault()
+		console.log('addcust')
 		$('#cust-dice-modal').modal('hide')
 
 		var size = parseInt($('#cust-form input').val())
@@ -81,12 +94,29 @@ $('document').ready(function() {
 	})
 })
 
+function loadDiceModules() {
+	var row = $('#add-cust-btn').parent()
+	var cust = $('#add-cust-btn').detach()
+	for (size in dice) {
+		newDice = createDice(size)
+		row.append(newDice)
+		if (row.children().length == 4) {
+			$('#roll-btn-container').before(row)
+			row = $('#d-flex-template').clone()
+			row.attr('id', '')
+			// row.append($('#add-cust-btn'))
+		}
+	}
+	row.append(cust)
+	$('#roll-btn-container').before(row)
+}
+
 // Creates the markup of the dice
 function createDice(size) {
-	newDice = $('#dice-input-template').clone()
+	newDice = $('#dice-module-template').clone()
 
 	// Update the attributes
-	newDice.attr('id', '')
+	newDice.attr('id', 'module' + size)
 	newDice.find('#amt-template').attr('id', 'amt' + size)
 	newDice.find('#rem-template').attr('id', 'rem' + size)
 	newDice.find('#add-template').attr('id', 'add' + size)

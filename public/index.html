@@ -37,10 +37,21 @@
               </button>
             </div>
           </div>
+          <div class='m-2 mt-3' id='dice-container'>
+            <div class='d-flex'>
+              <button type='button' class='btn btn-secondary dice-module m-1 py-3 px-2'  id='add-cust-btn' data-target='#cust-dice-modal' data-toggle='modal'>
+                Add Custom Dice
+              </button>
+            </div>
+            <center id='roll-btn-container'>
+              <button type='button' class='btn btn-secondary w-25 m-1 mt-4' id='save-dice-btn'>Save Dice</button>
+              <button type='button' class='btn btn-success w-25 m-1 mt-4' id='roll-btn'>Roll!</button>
+            </center>
+          </div>
           <div class='card m-2 mt-3' id='main-interface'> <!-- Main Dice Interface -->
             <div class='card-body' id='row-container'>
-              <div class='row'>
-                <div class='col-md dice-input p-0'>
+              <div class='d-flex'>
+                <!-- <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
                       <i class='fa fa-minus-square rem spin' id='rem4'></i>
@@ -48,8 +59,13 @@
                       <i class='fa fa-plus-square add spin' id='add4'></i>
                     </div>
                   </div>
+                </div> -->
+                <div class='dice-module m-1 py-3 px-2'>
+                  <i class='fa fa-minus-square float-left rem spin' id='rem6'></i>
+                    <span class='amt' contenteditable='true' id='amt6'>0</span><span>d6</span>
+                  <i class='fa fa-plus-square float-right add spin' id='add6'></i>
                 </div>
-                <div class='col-md dice-input p-0'>
+                <!-- <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
                       <i class='fa fa-minus-square rem spin' id='rem6' ></i>
@@ -75,10 +91,10 @@
                       <i class='fa fa-plus-square add spin' id='add10'></i>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class='row'>
-                <div class='col-md dice-input p-0'>
+                <!-- <div class='col-md dice-input p-0'>
                   <div class='card border-0'>
                     <div class='dice-group m-1 py-3 px-2'>
                       <i class='fa fa-minus-square rem spin' id='rem12'></i>
@@ -105,53 +121,15 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class='col-md dice-input p-0'>
-                  <div class='card border-0'>
-                    <div class='dice-group m-1 py-3 px-2'>
-                      <i class='fa fa-minus-square rem spin' id='remCust' ()'></i>
-                      <span class='amt' contenteditable='true' id='amtCust'>0</span>d<span contenteditable='true' id='custSize'>Cust</span>
-                      <i class='fa fa-plus-square add spin' id='addCust'()'></i>
-                    </div>
-                  </div>
-                </div>  --> 
                 <div class='col-md dice-input p-0 h-100' id='add-cust-btn-container'>
                   <div class='card border-0 h-100'>
                     <div class='dice-group m-1 h-100 align-middle'>
                       <button type='button' class='btn btn-success w-100 align-middle' id='add-cust-btn' data-toggle='modal' data-target='#cust-dice-modal'>Add custom dice</button>
-                      <!-- Cust Dice Modal -->
-                      <div class='modal fade' id='cust-dice-modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog' role='document'>
-                          <div class='modal-content'>
-                            <div class='modal-header'>
-                              <h5 class='modal-title' id='example-modal-label'>Adding custom dice</h5>
-                              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                              </button>
-                            </div>
-                            <div class='modal-body'>
-                              <form id='cust-form'>
-                                <div class='form-row'>
-                                  <label for='custSizeInput' id='cust-size-label'>Enter the number of sides:</label>
-                                  <input class='form-control' type='number' id='custSizeInput
-                                  ' min='1' max='9999' name='custSize' required>
-                                </div>
-                                <div class='modal-footer'>
-                                  <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                                  <button type='submit' class='btn btn-primary'>Submit</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div> <!-- End of Cust Dice Modal --> 
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
-              <center id='roll-btn-container'>
-                <button type='button' class='btn btn-secondary w-25 m-1 mt-4' id='save-dice-btn'>Save Dice</button>
-                <button type='button' class='btn btn-success w-25 m-1 mt-4' id='roll-btn'>Roll!</button>
-              </center>
+              
             </div>
           </div>
           <div class='card m-2 mt-3'>
@@ -179,8 +157,15 @@
     </div>
 
     <div id='templates'>
+      <!-- New dice module template -->
+      <div class='dice-module m-1 py-3 px-2' id='dice-module-template'>
+        <i class='fa fa-minus-square float-left spin rem' id='rem-template'></i>
+          <span class='amt' contenteditable='true' id='amt-template'>0</span><span id='size-text-template'>dX</span>
+        <i class='fa fa-plus-square float-right spin add' id='add-template'></i>
+      </div>
+      <div class='d-flex' id='d-flex-template'></div>
       <!-- Dice input -->
-      <div class='col-md dice-input p-0' id='dice-input-template'>
+      <!-- <div class='col-md dice-input p-0' id='dice-input-template'>
         <div class='card border-0'>
           <div class='dice-group m-1 py-3 px-2'>
             <i class='fa fa-minus-square rem spin' id='rem-template'></i>
@@ -188,13 +173,38 @@
             <i class='fa fa-plus-square add spin' id='add-template'></i>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- End of dice input -->
       <!-- Row template -->
       <div class='row' id='row-template'></div>
-      <!-- Paragraph template -->
-      <p id='para-template'></p>
     </div>
+
+    <!-- Cust Dice Modal -->
+    <div class='modal fade' id='cust-dice-modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+      <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+          <div class='modal-header'>
+            <h5 class='modal-title' id='example-modal-label'>Adding custom dice</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
+          </div>
+          <div class='modal-body'>
+            <form id='cust-form'>
+              <div class='form-row'>
+                <label for='custSizeInput' id='cust-size-label'>Enter the number of sides:</label>
+                <input class='form-control' type='number' id='custSizeInput
+                ' min='1' max='9999' name='custSize' required>
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                <button type='submit' class='btn btn-primary'>Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> <!-- End of Cust Dice Modal --> 
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
