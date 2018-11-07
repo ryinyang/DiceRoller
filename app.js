@@ -33,8 +33,6 @@ app.listen(port, function() {
 // Receives dice rolls and randomly generates number
 // then sends sum back
 app.post('/roll', function(req, res) {
-	console.log('requested')
-	console.log(req.body)
 	dice = req.body
 	sum = 0
 	for (size in dice) {

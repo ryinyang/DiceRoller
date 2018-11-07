@@ -32,7 +32,7 @@
           <div class='card m-2 mt-3'> <!-- Main Display -->
             <div class='card-body'>
               <h2 class='card-title d-inline' id='main-display'>Hello World!</h2>
-              <button type='button' class='close' id='clear-dice-btn' onclick='clearDice()' aria-label='Close'>
+              <button type='button' class='close' id='reset-dice-btn' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
@@ -44,17 +44,17 @@
               </button>
             </div>
             <center id='roll-btn-container'>
-              <button type='button' class='btn btn-secondary m-1 mt-4' id='save-dice-btn'>Save Dice</button>
+              <button type='button' class='btn btn-secondary m-1 mt-4' id='save-dice-btn'>Save</button>
               <button type='button' class='btn btn-success m-1 mt-4' id='roll-btn'>Roll!</button>
             </center>
           </div>
           <div class='card m-2 mt-3'>
             <div class='card-body'>
               <h2 class='card-title'>Saved Rolls</h2>
-              <ul class="list-group">
+              <ul class="list-group" id='combo-container'>
                 <li class="list-group-item">
                   <div class='d-inline'>Cras justo odio</div>
-                  <button type='button' class='btn float-right'>Load</button>
+                  <button type='button' class='btn btn-primary float-right load-button'>Load</button>
                 </li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
                 <li class="list-group-item">Morbi leo risus</li>
@@ -68,10 +68,10 @@
           <div class='card m-2 mt-3'>
             <div class='card-body' id='history-container'>
               <h3 class='card-title d-inline' id='history-title'>History</h3>
-              <button type='button' class='close' id='clear-hist-btn' onclick='clearHist()' aria-label='Close'>
+              <button type='button' class='close' id='clear-hist-btn' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
-              <div id='history-text'></div>
+              <div class='list-group' id='history-text'></div>
             </div>
           </div>
         </div>
@@ -82,12 +82,16 @@
       <!-- New dice module template -->
       <div class='dice-module m-1 py-3 px-2' id='dice-module-template'>
         <i class='fa fa-minus-square float-left spin rem' id='rem-template'></i>
-          <span class='amt' contenteditable='true' id='amt-template'>0</span><span id='size-text-template'>dX</span>
+          <span class='amt' contenteditable='false' id='amt-template'>0</span><span id='size-text-template'>dX</span>
         <i class='fa fa-plus-square float-right spin add' id='add-template'></i>
       </div>
       <div class='d-flex' id='d-flex-template'></div>
-      <li class="list-group-item" id='list-group-item-template'>Dapibus ac facilisis in</li>
+      <li class="list-group-item" id='combo-template'>
+        <div class='d-inline'>Cras justo odio</div>
+        <button type='button' class='btn float-right load-button'>Load</button>
+      </li>
     </div>
+
     <!-- Cust Dice Modal -->
     <div class='modal fade' id='cust-dice-modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
       <div class='modal-dialog' role='document'>
@@ -120,6 +124,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+    <script src='js/DiceArray.js'></script>
+    <script src='js/DiceModule.js'></script>
     <script src='js/javascript.js'></script>
     <!-- <script src='js/util.js'></script> -->
 
