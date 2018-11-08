@@ -10,7 +10,7 @@ function initDiceModules() {
 	var newDice = null
 
 	// Add the common dice
-	for (size of init) {
+	for (var size of init) {
 		newDice = new DiceModule(size)
 		diceArray.append(newDice)
 		row.append(createDiceMarkup(size))
@@ -28,6 +28,7 @@ function initDiceModules() {
 
 // Increments the amount of a certain dice
 function add(size) {
+	// console.log('Adding a d' + size)
 	var diceToUpdate = diceArray.get(size)
 
 	// Update DiceModule Model
@@ -40,12 +41,15 @@ function add(size) {
 }
 
 // Decrements the amount of a certain dice
-function rem(num) {
+function rem(size) {
+	// console.log('Removing a d' + size)
 	var diceToUpdate = diceArray.get(size)
 
 	// Update DiceModule Model
-	if (diceToUpdate.getAmount() > 0)
+	console.log(diceToUpdate.getAmount())
+	if (diceToUpdate.getAmount() > 0) {
 		diceToUpdate.decrement()
+	}
 
 	// Update DiceModule View
 	$('#amt' + size).text(diceToUpdate.getAmount().toString())
@@ -169,7 +173,8 @@ function histToStr(hist) {
 }
 
 function showHist() {
-	$('#history-text').text(histToStr(hist))
+	// $('#history-text').text(histToStr(hist))
+
 }
 
 function clearHist() {
