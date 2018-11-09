@@ -132,7 +132,6 @@ function rollDice() {
 
 				// Update hist
 				updateHist(diceArray, sum)
-				showHist()
 			},
 			error: function(err){ alert('error'); },
 			contentType: 'application/json'
@@ -199,7 +198,9 @@ $('document').ready(function() {
 
 	initDiceModules()
 
-	$('#reset-dice-btn').click(resetDice)
+	$('#clear-display-btn').click(function () {
+		updateMainDisplay('Cleared!')
+	})
 
 	// Add button handler
 	$(document).on('click', '.rem', function(e) {
@@ -220,6 +221,9 @@ $('document').ready(function() {
 
 	// Bind saveCombo() to its button
 	$('#save-dice-btn').click(saveCombo)
+
+	// Bind clearDice() to its button
+	$('#reset-dice-btn').click(resetDice)
 
 	// Bind clearHist() to its button
 	$('#clear-hist-btn').click(clearHist)

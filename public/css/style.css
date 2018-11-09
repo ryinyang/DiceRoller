@@ -117,6 +117,11 @@ body {
 	border-width: 1.5px;
 }
 
+#reset-dice-btn {
+	width: calc(25% - .5rem);
+	border-width: 1.5px;
+}
+
 .list-group-item {
 	padding-top: .25rem;
 	padding-bottom: .25rem;
