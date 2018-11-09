@@ -131,7 +131,7 @@ function rollDice() {
 				updateMainDisplay(diceArray.toString() + ' = ' + sum)
 
 				// Update hist
-				addToHist(diceArray, sum)
+				updateHist(diceArray, sum)
 				showHist()
 			},
 			error: function(err){ alert('error'); },
@@ -151,35 +151,34 @@ function resetDice() {
 	updateMainDisplay()
 }
 
-/*
-	Function to update the hist array
-*/
-function addToHist(diceArray, sum) {
+// Function to update the hist array and update markup
+function updateHist(diceArray, sum) {
 
+	var histLimit = 256
+
+	// Update hist array
 	// Keep length of array fixed, otherwise, could run out of mem
-	if (hist.length > 10) {
+	if (hist.length > histLimit) {
 		hist.shift()
 	}
 	hist.push(diceArray.toString() + ' = ' + sum)
 	sessionStorage.setItem('hist', JSON.stringify(hist))
-}
+	
+	// Update view
+	var entry = $('#hist-entry-template').clone()
+	entry.attr('id', '')
+	entry.text(diceArray.toString() + ' = ' + sum)
+	$('#hist-list').prepend(entry)
 
-function histToStr(hist) {
-	txt = ''
-	for (var i = hist.length-1; i >= 0; i--) {
-		txt += hist[i] + '\n'
+	// Don't show too many 
+	if ($('#hist-list').children().length > histLimit) {
+		$('#hist-list').children().last().remove()
 	}
-	return txt
-}
-
-function showHist() {
-	// $('#history-text').text(histToStr(hist))
-
 }
 
 function clearHist() {
 	hist.length = 0
-	$('#history-text').text('')
+	// $('#history-text').text('')
 }
 
 function saveCombo() {

@@ -30,11 +30,11 @@ body {
 	background-color: #c5c5c5;
 }
 
-.rounded-border {
+/*.rounded-border {
 	flex-wrap: nowrap;
 	border: 1.5px solid #c5c5c5;
 	border-radius: 0.3rem;
-}
+}*/
 
 .add:active, .rem:active {
 	color: #777777 !important;
@@ -44,7 +44,7 @@ body {
 	width: calc(25% - .5rem);
 	text-align: center;
 	border: 1.5px solid #c5c5c5;
-	/*border-radius: 0.3rem;*/
+	border-radius: 0.3rem;
 }
 
 .spin {
@@ -67,9 +67,14 @@ body {
 }
 
 /* History */
-#history-container {
-	height: 357px !important;
+#hist-container {
+	/*height: 357px !important;*/
+	background-color: white;
+}
+
+#hist-list {
 	overflow-y: scroll;
+	height: 357px !important;
 
 }
 
@@ -100,8 +105,6 @@ body {
 
 #dice-container {
 	background-color: white;
-	border: 1.5px solid #c5c5c5;
-	padding:1.25rem;
 }
 
 #roll-btn {
