@@ -2,7 +2,6 @@
 function DiceModule(sz, amt=0) {
 	this.size = sz
 	this.amount = amt
-	this.id = ''
 
 	// Returns the size
 	this.getSize = function() {return this.size}
@@ -18,13 +17,7 @@ function DiceModule(sz, amt=0) {
 	this.increment = function() {this.amount++}
 	this.decrement = function() {this.amount--}
 
-	// Returns the DOM id of this DiceModule
-	this.getId = function() {return this.id}
-
-	// Changes the DOM id of this DiceModule
-	this.setId = function(id) {this.id = id}
-
-	this.toString = function() {
+	this.toString = function(verbose=false) {
 		return this.amount + 'd' + this.size
 	}
 }

@@ -112,7 +112,7 @@ body {
 	border-width: 1.5px;
 }
 
-#save-dice-btn {
+#save-tray-btn {
 	width: calc(25% - .5rem);
 	border-width: 1.5px;
 }
@@ -125,4 +125,10 @@ body {
 .list-group-item {
 	padding-top: .25rem;
 	padding-bottom: .25rem;
+}
+
+.load-btn {
+	border-radius: 0px !important;
+	border: 1px solid #c5c5c5;
+	background-color: #c5c5c5;
 }

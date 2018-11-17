@@ -1,38 +1,38 @@
 // DiceArray class maintains the list of DiceModule objects. 
 // Makes sure that each DiceModule is unique.
 function DiceArray() {
-	this.array = []
+	this.data = []
 	this.seen = new Set()
 
-	// Add to end of array
+	// Add to end of data
 	this.append = function(newDice) {
 		if (newDice instanceof DiceModule) {
 			sz = newDice.getSize()
 			if (!this.seen.has(sz)) {
-				this.array.push(newDice)
+				this.data.push(newDice)
 				this.seen.add(sz)
 			}
 		} else {
 			sz = newDice
 			if (!this.seen.has(sz)) {
-				this.array.push(new DiceModule(sz))
+				this.data.push(new DiceModule(sz))
 				this.seen.add(sz)
 			}
 		}
 	}
 
-	// Add to beginning of array
+	// Add to beginning of data
 	this.prepend = function(newDice) {
 		if (newDice instanceof DiceModule) {
 			sz = newDice.getSize()
 			if (!this.seen.has(sz)) {
-				this.array.unshift(newDice)
+				this.data.unshift(newDice)
 				this.seen.add(sz)
 			}
 		} else {
 			sz = newDice
 			if (!this.seen.has(sz)) {
-				this.array.unshift(new DiceModule(sz))
+				this.data.unshift(new DiceModule(sz))
 				this.seen.add(sz)
 			}
 		}
@@ -40,14 +40,14 @@ function DiceArray() {
 
 	// Set all amounts to 0
 	this.reset = function() {
-		for (var i in this.array) {
-			this.array[i].setAmount(0)
+		for (var i in this.data) {
+			this.data[i].setAmount(0)
 		}
 	}
 
 	this.get = function(size) {
-		for (var i in this.array) {
-			var d = this.array[i]
+		for (var i in this.data) {
+			var d = this.data[i]
 			if (d.getSize() == size) {
 				return d
 			}
@@ -55,17 +55,17 @@ function DiceArray() {
 		return null
 	}
 
-	this.toString = function() {
+	this.toString = function(verbose=false) {
 		var txt = ''
 		var d = null
 
-		for (var i in this.array) {
-			d = this.array[i]
-			if (d.getAmount()) {
+		for (var i in this.data) {
+			d = this.data[i]
+			if ((d.getAmount() != 0) || verbose) {
 				if (txt) {
-					txt += ' + ' + d.toString()
+					txt += ' + ' + d.toString(verbose)
 				} else {
-					txt += d.toString()
+					txt += d.toString(verbose)
 				}
 			}
 		}
@@ -73,8 +73,8 @@ function DiceArray() {
 	}
 
 	this.isEmpty = function() {
-		for (var i in this.array) {
-			var d = this.array[i]
+		for (var i in this.data) {
+			var d = this.data[i]
 			if (d.getAmount())
 				return false
 		}
@@ -82,18 +82,36 @@ function DiceArray() {
 	}
 
 	this.getLength = function() {
-		return this.array.length
+		return this.data.length
 	}
 
 	this.toJSON = function() {
 		var ret = {}
-		for (d of this.array) {
+		for (d of this.data) {
 			ret[d.getSize()] = d.getAmount()
 		}
 		return JSON.stringify(ret)
 	}
 
 	this.toArray = function() {
-		return this.array
+		return this.data
+	}
+
+	this.has =function(size) {
+		return this.seen.has(size)
+	}
+
+	this.fromString = function(s) {
+		var dice = s.split(' + ')
+
+		// Clear properties
+		this.data = []
+		this.seen = new Set()
+
+		for (var d of dice) {
+			var num = d.split('d')[0]
+			var size = d.split('d')[1]
+			this.append(new DiceModule(size, num))
+		}
 	}
 }

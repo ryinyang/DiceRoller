@@ -1,6 +1,6 @@
 const diceArray = new DiceArray()		// Object to keep track of number of each dice
 const hist = []
-const combos = []
+const trays = []
 
 // Initial load up the DiceModules 
 function initDiceModules() {
@@ -35,7 +35,9 @@ function add(size) {
 	diceToUpdate.increment()
 
 	// Update DiceModule View
-	$('#amt' + size).text(diceToUpdate.getAmount().toString())
+	var amt = diceToUpdate.getAmount().toString()
+	var size = diceToUpdate.getSize().toString()
+	$('#amt' + size).text(amt + 'd' + size)
 
 	updateMainDisplay(diceArray.toString())
 }
@@ -52,22 +54,25 @@ function rem(size) {
 	}
 
 	// Update DiceModule View
-	$('#amt' + size).text(diceToUpdate.getAmount().toString())
+	var amt = diceToUpdate.getAmount().toString()
+	var size = diceToUpdate.getSize().toString()
+	$('#amt' + size).text(amt + 'd' + size)
 
 	updateMainDisplay(diceArray.toString())
 }
 
-
 // Creates the markup of the dice
-function createDiceMarkup(size) {
-	newDice = $('#dice-module-template').clone()
+function createDiceMarkup(size, amount=0) {
+	var newDice = $('#dice-module-template').clone()
+
+	amount = parseInt(amount)
 
 	// Update the attributes
 	newDice.attr('id', 'module' + size)
 	newDice.find('#amt-template').attr('id', 'amt' + size)
 	newDice.find('#rem-template').attr('id', 'rem' + size)
 	newDice.find('#add-template').attr('id', 'add' + size)
-	newDice.find('#size-text-template').html('d' + size)
+	newDice.find('#amt' + size).text(amount + 'd' + size) 
 
 	return newDice
 }
@@ -79,6 +84,10 @@ function addCustDice() {
 	var size = parseInt($('#cust-form input').val())
 
 	// If size is new, add new dice to dice obj
+	if (diceArray.has(size)) {
+		$("#module" + size).effect("highlight", {}, 3000);
+		return
+	}
 	diceArray.append(size)
 
 	// Create new dice
@@ -89,6 +98,7 @@ function addCustDice() {
 
 	// Move add-cust-btn
 	var numUnique = diceArray.getLength()
+	console.log(numUnique)
 	if (numUnique % 4 == 0) {
 		var newRow = $('#d-flex-template').clone()
 		newRow.attr('id', '')
@@ -180,15 +190,68 @@ function clearHist() {
 	// $('#history-text').text('')
 }
 
-function saveCombo() {
-	console.log('Adding combo')
-	combos.push(diceArray)
+function saveTray() {
+	if (diceArray.isEmpty()) {
+		return
+	}
 
-	comboMarkup = $('#combo-template').clone()
-	comboMarkup.attr('id', 'combo' + combos.length)
+	// Check for duplicate
+	for (var t of trays) {
+		if (t == diceArray.toString()) {
+			console.log('dupe')
+			return
+		}
+	}
 
-	$('#first-combo').text(diceArray.toString())
-	console.log(diceArray)
+	// Update trays array
+	trays.push({'short': diceArray.toString(),
+				'long': diceArray.toString(true)})
+
+	// Update view/markup
+	var tray = $('#tray-save-template').clone(true, true)
+	tray.attr('id', diceArray.toString())
+	tray.find('.d-inline').text(diceArray.toString())
+	$('#tray-container').append(tray)
+}
+
+function loadTray(id) {
+	for (var t of trays) {
+		if (t['short'] == id) {
+			break
+		}
+	}
+
+	// Update diceArray
+	diceArray.fromString(t['long'])
+
+	// Update markup
+	// var row = $('#add-cust-btn').parent()
+	var cust = $('#add-cust-btn').detach()
+	// var roll_btn_container = $('#roll-btn-container').detach()
+
+	// Remove all existing DiceModules
+	var row = $('#dice-container .d-flex:nth-child(2)')
+	row.nextAll('.d-flex').remove()
+	row.children().remove()
+
+	// Add new ones back in
+	for (var d of diceArray.toArray()) {
+		var size = d.getSize()
+		var amount = d.getAmount()
+
+		row.append(createDiceMarkup(size, amount))
+
+		// Create new row to fit
+		if (row.children().length == 4) {
+			$('#roll-btn-container').before(row)
+			row = $('#d-flex-template').clone()
+			row.attr('id', '')
+		}
+	}
+	row.append(cust)
+	$('#roll-btn-container').before(row)
+
+	updateMainDisplay(diceArray.toString())
 }
 
 // All the handler bindings
@@ -216,11 +279,16 @@ $('document').ready(function() {
 		add(size)
 	})
 
+	$(document).on('click', '.load-btn', function(e) {
+		var id = e.target.id
+		loadTray(id)
+	})
+
 	// Bind roll() to its button
 	$('#roll-btn').click(rollDice)
 
 	// Bind saveCombo() to its button
-	$('#save-dice-btn').click(saveCombo)
+	$('#save-tray-btn').click(saveTray)
 
 	// Bind clearDice() to its button
 	$('#reset-dice-btn').click(resetDice)

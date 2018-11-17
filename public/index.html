@@ -46,22 +46,14 @@
             </div>
             <center id='roll-btn-container'>
               <button type='button' class='btn btn-danger m-1 mt-4' id='reset-dice-btn'>Reset Tray</button>
-              <button type='button' class='btn btn-secondary m-1 mt-4' id='save-dice-btn'>Save</button>
+              <button type='button' class='btn btn-secondary m-1 mt-4' id='save-tray-btn'>Save</button>
               <button type='button' class='btn btn-success m-1 mt-4' id='roll-btn'>Roll!</button>
             </center>
           </div>
           <div class='card m-2 mt-3'>
             <div class='card-body'>
-              <h4 class='card-title'>Saved Rolls</h4>
-              <ul class="list-group" id='combo-container'>
-                <li class="list-group-item">
-                  <div class='d-inline'>Cras justo odio</div>
-                  <button type='button' class='btn btn-primary float-right load-button'>Load</button>
-                </li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+              <h4 class='card-title'>Saved Trays</h4>
+              <ul class="list-group" id='tray-container'>
               </ul>
             </div>
           </div>
@@ -91,13 +83,13 @@
       <!-- New dice module template -->
       <div class='dice-module m-1 py-3 px-2' id='dice-module-template'>
         <i class='fa fa-minus-square float-left spin rem' id='rem-template'></i>
-          <span class='amt' contenteditable='false' id='amt-template'>0</span><span id='size-text-template'>dX</span>
+          <span class='amt' contenteditable='false' id='amt-template'>0dX</span>
         <i class='fa fa-plus-square float-right spin add' id='add-template'></i>
       </div>
       <div class='d-flex' id='d-flex-template'></div>
-      <li class="list-group-item" id='combo-template'>
-        <div class='d-inline'>Cras justo odio</div>
-        <button type='button' class='btn float-right load-button'>Load</button>
+      <li class="list-group-item pt-0 pb-0 pr-0" id='tray-save-template'>
+        <div class='d-inline pt-1'></div>
+        <button type='button' class='btn float-right load-btn'>Load</button>
       </li>
       <li class='list-group-item' id='hist-entry-template'>Item</li>
     </div>
@@ -131,6 +123,7 @@
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
