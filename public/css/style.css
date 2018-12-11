@@ -132,10 +132,15 @@ body {
 	padding-bottom: .25rem;
 }
 
-.load-btn {
+.tray-load-btn {
 	border-radius: 0px !important;
 	border: 1px solid #c5c5c5;
 	background-color: #c5c5c5;
+}
+
+.tray-roll-btn {
+	border-radius: 0px !important;
+	border: 1px solid green;
 }
 
 /*

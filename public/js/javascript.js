@@ -121,10 +121,11 @@ function updateMainDisplay(s) {
 
 // Updates the amount of each dice
 function updateAmounts() {
-	for (d of diceArray.toArray()) {
+	for (var d of diceArray.toArray()) {
+		console.log(d)
 		var size = d.getSize()
 		var amount = d.getAmount()
-		$('#amt' + size).text(amount)
+		$('#amt' + size).text(amount + 'd' + size)
 	}
 }
 
