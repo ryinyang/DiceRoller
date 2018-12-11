@@ -83,6 +83,9 @@ function addCustDice() {
 
 	var size = parseInt($('#cust-form input').val())
 
+	$('#cust-form input').val('')
+	console.log($('#cust-form input').val())
+
 	// If size is new, add new dice to dice obj
 	if (diceArray.has(size)) {
 		$("#module" + size).effect("highlight", {}, 3000);

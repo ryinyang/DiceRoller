@@ -27,18 +27,16 @@
       <a class='navbar-brand' href='#'>RPG Dice Roller</a>
     </nav>
     <div class='container'>
-      <div class='row'>
-        <div class='col-md-9 p-0'>
-          <div class='card m-2 mt-3'> <!-- Main Display -->
-            <div class='card-body'>
-              <h3 class='card-title d-inline' id='main-display'>Add some dice!</h3>
-              <button type='button' class='close' id='clear-display-btn' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
+      <div class='row mt-3'>
+        <div class='col-md-9'>
+          <div class='white-background p-3'> <!-- Main Display -->
+            <h3 class='d-inline' id='main-display'>Add some dice!</h3>
+            <button type='button' class='close' id='clear-display-btn' aria-label='Close'>
+              <span aria-hidden='true'>&times;</span>
+            </button>
           </div>
-          <div class='m-2 mt-3 p-3' id='dice-container'>
-            <h4>Dice Tray</h4>
+          <div class='p-3 mt-3' id='dice-container'>
+            <h4 class='mt-0 mb-2'>Dice Tray</h4>
             <div class='d-flex'>
               <button type='button' class='btn btn-secondary dice-module m-1 py-3 px-2' id='add-cust-btn' data-target='#cust-dice-modal' data-toggle='modal'>
                 Add Custom Dice
@@ -50,28 +48,14 @@
               <button type='button' class='btn btn-success m-1 mt-4' id='roll-btn'>Roll!</button>
             </center>
           </div>
-          <div class='card m-2 mt-3'>
-            <div class='card-body'>
-              <h4 class='card-title'>Saved Trays</h4>
-              <ul class="list-group" id='tray-container'>
-              </ul>
-            </div>
+          <div class='white-background p-3 mt-3'>
+            <h4 class='mt-0 mb-2'>Saved Trays</h4>
+            <ul class="list-group" id='tray-container'></ul>
           </div>
         </div>
-        <!-- <div class='col-md-3 p-0'>
-          <div class='card m-2 mt-3'>
-            <div class='card-body' id='history-container'>
-              <h3 class='card-title d-inline' id='history-title'>History</h3>
-              <button type='button' class='close' id='clear-hist-btn' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-              <div class='list-group' id='history-text'></div>
-            </div>
-          </div>
-        </div> -->
-        <div class='col-md-3 p-0'>
-            <div class='m-2 mt-3 p-0' id='hist-container'>
-              <h4 class='p-3'>History</h4>
+        <div class='col-md-3 pl-0'>
+            <div class='' id='hist-container'>
+              <h4 class='mt-0 mb-2 p-3'>History</h4>
               <ul class='list-group list-group-flush' id='hist-list'>
               </ul>
             </div>
