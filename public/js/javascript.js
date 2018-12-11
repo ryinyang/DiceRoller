@@ -219,19 +219,20 @@ function saveTray() {
 }
 
 function loadTray(id) {
+	console.log('Trying to find ' + id)
 	for (var t of trays) {
 		if (t['short'] == id) {
+			console.log('found')
 			break
 		}
 	}
+	console.log(t)
 
 	// Update diceArray
 	diceArray.fromString(t['long'])
 
 	// Update markup
-	// var row = $('#add-cust-btn').parent()
 	var cust = $('#add-cust-btn').detach()
-	// var roll_btn_container = $('#roll-btn-container').detach()
 
 	// Remove all existing DiceModules
 	var row = $('#dice-container .d-flex:nth-child(2)')
@@ -283,10 +284,16 @@ $('document').ready(function() {
 		add(size)
 	})
 
-	$(document).on('click', '.load-btn', function(e) {
-		var id = e.target.id
+	$(document).on('click', '.tray-load-btn', function(e) {
+		var id = e.target.parentNode.id
 		loadTray(id)
 	})
+
+	$(document).on('click', '.tray-roll-btn', function(e) {
+		var id = e.target.parentNode.id
+		loadTray(id)
+		rollDice()
+	})	
 
 	// Bind roll() to its button
 	$('#roll-btn').click(rollDice)
@@ -309,9 +316,5 @@ $('document').ready(function() {
 	// Make sure to focus on input when modal opens up
 	$('.modal').on('shown.bs.modal', function() {
 		$(this).find('input:first').focus()
-	})
-
-	$(document).on('click', '.load-button', function() {
-
 	})
 })
